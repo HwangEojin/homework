@@ -45,16 +45,14 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/VSCode-2C2C32.svg?style=for-the-badge&logo=visual-studio-code&logoColor=22ABF3" />&nbsp
-  <img src="https://img.shields.io/badge/jupyter-2C2C32.svg?style=for-the-badge&logo=jupyter&logoColor=F37726" />&nbsp
-<!--   <img src="https://img.shields.io/badge/Colab-2C2C32.svg?style=for-the-badge&logo=googlecolab&logoColor=F9AB00" />&nbsp -->
 </div>
 
 <br>
 
 <h3 align="center">📫 Contact 📫</h3>
 <div align="center">
-  <a href="https://velog.io/@oka1313">
-    <img src="https://img.shields.io/badge/Velog-1EBC8F?style=for-the-badge&logo=velog&logoColor=white" />&nbsp
+  <a href="https://www.notion.so/Portfolio-145e7c0737cf80e8b825ea189671baae">
+    <img src="https://img.shields.io/badge/Notion-1EBC8F?style=for-the-badge&logo=notion&logoColor=white" />&nbsp
   </a>
   <a href="mailto:jhin.h8@gmail.com">
     <img
