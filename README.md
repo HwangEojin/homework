@@ -45,21 +45,26 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/VSCode-2C2C32.svg?style=for-the-badge&logo=visual-studio-code&logoColor=22ABF3" />&nbsp
+  <img src="https://img.shields.io/badge/Androidstudio-3DDC84.svg?style=for-the-badge&logo=androidstudio&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Xcode-147EFB.svg?style=for-the-badge&logo=xcode&logoColor=white" />&nbsp
+  
 </div>
 
 <br>
 
 <h3 align="center">📫 Contact 📫</h3>
 <div align="center">
-  <a href="https://www.notion.so/Portfolio-145e7c0737cf80e8b825ea189671baae">
-    <img src="https://img.shields.io/badge/Notion-1EBC8F?style=for-the-badge&logo=notion&logoColor=white" />&nbsp
-  </a>
+ 
   <a href="mailto:jhin.h8@gmail.com">
     <img
       src="https://img.shields.io/badge/jhin.h8@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>&nbsp
   </a>
+</div>
 
-  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hwangEojin&show_icons=true&theme=radical)
-  ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hwangEojin&layout=compact)
+<div>
+    ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hwangEojin&show_icons=true&theme=radical)
+</div>
 
+<div>
+    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hwangEojin&layout=compact)
 </div>
