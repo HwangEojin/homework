@@ -1,4 +1,4 @@
-package homework;
+package section09;
 
 public class Ex09_08 {	//클래스 선언
 	

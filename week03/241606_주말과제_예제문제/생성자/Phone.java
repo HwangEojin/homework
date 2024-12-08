@@ -1,10 +1,16 @@
-package homework;
+package section09;
 
 public class Phone {		// class 생성
 	
 	String brand;			// field 선언
 	int series;				// field 선언
 	String color = "검정색";	// field 선언
+	
+	
+	Phone(String b, int s) { // 매개변수를 2개 받는 생성자
+		brand = b;						// brand에 매개변수 b 할당
+		series =s;						// series에 매개변수 s 할당
+	}
 	
 	Phone(String b, int s, String c) { // 모든 field 값을 매개변수로 받는 생성자
 		brand = b;						// brand에 매개변수 b 할당

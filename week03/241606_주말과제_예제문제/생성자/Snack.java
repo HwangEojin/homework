@@ -1,4 +1,4 @@
-package homework;
+package section09;
 //예제 9-1 ~ 9-3 예제 공통 코드
 public class Snack {			// class 생성
 	int price ; 				//field값 가격 선언

@@ -1,4 +1,4 @@
-package homework;
+package section09;
 
 public class EX09_04 {					//클래스 생성		
 	public static void main(String[] args) {
