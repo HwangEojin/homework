@@ -40,11 +40,11 @@ public class Task02 {
 
 	public static void main(String[] args) {
 
-		Scanner scan = new Scanner(System.in); 				// 스캐너 객체 생성
-		Task02 task = new Task02(); 						// 객체 생성
+		Scanner scan = new Scanner(System.in); 					// 스캐너 객체 생성
+		Task02 task = new Task02(); 							// 객체 생성
 
-		int speed = 0; 										// 속도를 저장할 변수 선언과 초기화
-		int fee = 0; 										// 범칙금을 변수로 선언 및 초기화
+		int speed = 0; 											// 속도를 저장할 변수 선언과 초기화
+		int fee = 0; 											// 범칙금을 변수로 선언 및 초기화
 
 		System.out.println("현재 당신의 속도는? (Km)"); 				// 안내 메시지
 		speed = scan.nextInt(); 								// 입력값을 변수에 저장
@@ -61,6 +61,7 @@ public class Task02 {
 			}
 			System.out.println("-----범칙금-----\n31~50km : 6만원\n51~70km : 9만원\n71~90km : 12만원\n90km 초과 : 15만원\n");
 			System.out.printf("당신이 내야할 범칙금은 %d원입니다\n", fee);
+			
 			while (speed > 30) {
 				System.out.println(task.speedCamera(speed));// 메소드 호출
 				speed--; // 증감 연산자 . 반복 회차마다 speed가 1씩 감소함
