@@ -1,0 +1,29 @@
+package ex02;
+
+public class Print {
+	public static void main(String[] args) {
+
+
+		/*
+		 * logic
+		 * 
+		 * while 사용 
+		 * 15 부터 30까지 반복 count 변수를 선언 짝수만 카운트에 저장하고 누적 합산
+		 * 
+		 */
+
+		int count = 15;
+		int sum = 0;
+		while (15 <= count && count <= 30) {
+
+			if (count % 2 == 0) {
+				sum += count;
+			}
+			count++;
+
+		}
+
+		System.out.println("짝수의 합 ? : " + sum);
+
+	}
+}

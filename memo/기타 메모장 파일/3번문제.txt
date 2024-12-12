@@ -1,0 +1,46 @@
+package ex03;
+
+public class Star1 {
+	public static void main(String[] args) {
+
+//
+//		   *
+//		  * *
+//		 * * *
+
+
+
+//			*
+//			**
+//			***
+//			****
+
+		for (int i = 1; i < 4; i++) {
+			for (int j = 0; j < 3 - i; j++) {
+				System.out.print(" ");
+			}
+			for (int j = 0; j < i; j++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+
+
+
+
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("출력하고 싶은 행 입력 : ");
+		int inputValue = sc.nextInt() + 1;
+	
+		for (int i = 1; i < inputValue; i++) {
+			for (int j = 0; j < i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+
+		}
+
+
+}
