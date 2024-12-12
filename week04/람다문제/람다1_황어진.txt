@@ -1,0 +1,65 @@
+package task;
+
+@FunctionalInterface
+public interface FunctionalInter3 {
+	int multiple(int param1, int param2);
+}
+
+
+
+===========================================
+
+package task;
+
+@FunctionalInterface
+public interface FunctionalInter4 {
+	String combineString(String param1, String param2);
+}
+
+
+=============================================
+
+package task;
+
+public class Task {
+
+//	1. 2개의 정수를 매개변수로 받아서 곱한 결과를 반환하는 메소드(람다식 이용)
+//	FunctionalInter3 이용하기
+//	- 새로운 함수형 인터페이스(FunctionalInter4)를 만들고
+//	- 2개의 문자열을 매개변수로 전달받는 추상 메소드(combineString)를 선언한다.
+//	- 람다식을 이용하여 2개의 문자열을 연결하여 출력한다.
+
+	/*
+	 * logic
+	 * 
+	 * 1)
+	 * 함수형 interface f3 과 f4를 만들고 추상 메소드를 각각 선언
+	 * 메인메소드에서 익명 클래스로 만들고 람다식으로 메소드 호출
+
+	 * 
+	 * */
+
+	public static void main(String[] args) {
+
+		FunctionalInter3 f3 = new FunctionalInter3() {
+
+			@Override
+			public int multiple(int param1, int param2) {
+				return param1 * param2;
+			}
+		};
+		
+		FunctionalInter4 f4 = new FunctionalInter4() {
+			@Override
+			public String combineString(String param1, String param2) {
+				return param1 + param2;
+			}	
+		};
+		
+		FunctionalInter4 lambda = (param1, param2) ->  param1 + param2;		//람다식으로 메소드 변환
+		
+		System.out.println(lambda.combineString("안녕 ", " 하세요"));
+
+	}
+	
+}

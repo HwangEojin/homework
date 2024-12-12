@@ -1,5 +1,6 @@
 package task;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class task3 {
 
@@ -15,18 +16,23 @@ public class task3 {
 		 * 
 		 */
 		Scanner scan = new Scanner(System.in);
+		int num = 0;
 
 		System.out.println("숫자를 하나 입력하면, 그 숫자의 2배를 출력합니다....");
 		
 		try {
-			int num = scan.nextInt();
+			try {
+				num = scan.nextInt();
+			} catch (InputMismatchException e) {
+				throw new MyException3("잘못된 값을 입력했습니다.");
+			}
 			if (0 <= num && num <= 100) {
 				System.out.println("출력되는 결과는 :" + (num * 2));
 			} else {
 				throw new MyException3("범위 밖의 숫자를 입력하셨습니다.");
 			}
 		} catch (MyException3 e) {
-			throw new MyException3("잘못된 입력입니다.");
+			System.out.println(e.getMessage());
 		}
 
 	}
