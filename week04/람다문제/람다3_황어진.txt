@@ -1,0 +1,79 @@
+package task3;
+
+public interface SubInter {
+	abstract String cutString(String param1, String param2);
+
+}
+
+
+=====================================================
+
+
+package task3;
+
+import java.util.Scanner;
+import task3.SubInter;
+
+public class Main {
+	public static void main(String[] args) {
+//		3. 두 문자열을 입력받아 첫 번째 문자열을 두 번째 문자열의 길이만큼 잘라내는 프로그램을 만든다.
+//		ex)
+//		첫 번째 : abcde
+//		두 번째 : 가나다
+//		결과 : de
+		//
+//		(1) SubInter.java(인터페이스)에 두 문자열을 매개변수로 받고 문자열을 반환하는 추상 메소드를 만든다.
+//		(2) Main2.java(클래스)에 다음과 같은 static 메소드를 선언한다.
+//		    - 매개변수로 문자열을 전달받는다.
+//		    - 전달받은 문자열이 "F"면 앞에서 자르고 "B"면 뒤에서 자르는 람다식을 만든다.
+//		    작성된 람다식을 SubInter 타입의 변수에 저장하여 반환하는 메소드를 만든다.
+		/*
+		 * 
+		 * 3) subInter.java 파일 생성 입력메소드로 문자열 2개를 입력받아
+		 * 	매개변수로 전달받는 추상메소드 생성 
+		 * 	main2에 static 메소드 선언 
+		 * 	매개변수로 문자열 전달하는 메소드 선언 
+		 * 	if 조건문으로 문자열 F인지 B인지 비교 조건식에 따라 람다식 생성 
+		 * 	SubInter 타입 변수에 저장 후 return 메소드 호출
+		 * 
+		 */
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("첫번째 문자열을 입력해주세요");
+		String str1 = scan.nextLine();
+		System.out.println("두번째 문자열을 입력해주세요");
+		String str2 = scan.nextLine();
+		
+		// 앞에서 자르는 경우
+		SubInter frontCutter = cutter("F");
+		String result1 = frontCutter.cutString(str1, str2);
+		System.out.println("앞에서 자르기 결과: " + result1);
+
+		// 뒤에서 자르는 경우
+		SubInter backCutter = cutter("B");
+		String result2 = backCutter.cutString(str1, str2);
+		System.out.println("뒤에서 자르기 결과: " + result2);
+
+	}
+
+		static SubInter cutter(String param) {
+			 SubInter lambda = null;
+		    if (param.charAt(0) == 'F') { // 앞에서 자르는 람다식
+		    	lambda= (param1, param2) -> {
+		            if (param1.length() < param2.length()) {
+		                System.out.println("두번째 문자열이 더 긺");
+		            }
+		            return param1.substring(param2.length());
+		        };
+		    } else if (param.charAt(0) == 'B') { // 뒤에서 자르는 람다식
+		    	lambda = (param1, param2) -> {
+		            if (param1.length() < param2.length()) {
+		            	System.out.println("두번째 문자열이 더 긺");
+		            }
+		            return param1.substring(0, param1.length() - param2.length());
+		        };
+		    }
+			return lambda; 
+		}
+
+}

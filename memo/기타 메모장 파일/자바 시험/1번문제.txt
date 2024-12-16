@@ -1,0 +1,53 @@
+package ex01;
+
+import java.util.Scanner;
+
+public class InputNumber {
+	public static void main(String[] args) {
+
+		/*
+		 * logic
+		 * 
+		 * 차례대로 입력메소드를 통해
+		 * 3차례 입력받고
+		 * 
+		 * 최소, 최대값을 구한후
+		 * 3개 변수의 평균을 소수점 2자리까지 출력
+		 * 
+		 * */
+		
+		int num1=0;
+		int num2=0;
+		int num3=0;
+		int min=0;
+		int max=0;
+		double avr = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("숫자를 입력하세요");
+		num1 = sc.nextInt();
+		num2 = sc.nextInt();
+		num3 = sc.nextInt();
+		
+		
+		max = ((num1 > num2) ? ((num1 > num3) ? num1 : num3) :((num2 > num3) ? num2 : num3));
+		min = ((num1 < num2) ? ((num1 < num3) ? num1 : num3) :((num2 < num3) ? num2 : num3));
+		
+		avr = (num1 + num2 + num3) / 3;
+		
+		System.out.println(num1);
+		System.out.println(num2);
+		System.out.println(num3);
+		
+		
+		System.out.println("최대값 : " + max);
+		System.out.println("최소값 : " + min);
+
+		System.out.printf("평균 : %.2f",avr);
+	
+ 
+		
+	}
+
+}

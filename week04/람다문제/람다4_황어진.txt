@@ -1,0 +1,88 @@
+package task4;
+
+@FunctionalInterface
+public interface ChangeInter {
+	String method(String str);
+}
+
+=================================================
+
+package task4;
+import java.util.Scanner;
+import task4.ChangeInter;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+//		+) 함수형 인터페이스(ChangeInter)와 람다식(Main)을 활용하여 다음과 같은 프로그램을 만든다.
+//		1. 문자열을 전달받는다.
+//		funny java
+//		2. 다음과 같이 변환하여 반환한다.
+//		FuNnY JaVa
+//
+//		각 단어를 대문자, 소문자로 번갈아서 변환한다.
+//		띄어쓰기가 나오면 다시 대문자로 시작한다.
+//		
+//		+) 함수형 인터페이스와 람다식을 활용한다.
+//		1. 문자열을 넘겨받는다.
+//		2. 문자열은 중간 중간 쉼표가 들어가있다.
+//		korea, Spain, Germaney, America
+//
+//		이 문자열의 쉼표를 느낌표로 바꿔서 출력하는 프로그램을 만들어라
+
+		/*
+		 * 함수형 인터페이스 생성 파라미터로 string값을 전달받고 메인메소드에서 메소드 생성 짝수번째마다 if 해당 문자가 소문자라면, 대문자로
+		 * 변환 만약 띄어쓰기가 나오면 다시 대문자로 시작 -> " " 공백 뒤는 무조건 대문자 , 는 !로 바꾸기
+		 * 
+		 * 
+		 */
+		 Scanner scan = new Scanner(System.in);
+	        System.out.println("문자열을 입력하세요.");
+	        String inputValue = scan.nextLine();
+
+	        // ChangeInter 함수형 인터페이스를 구현하여 문자열 처리
+	        ChangeInter ci = (str) -> {
+	            // 문자열을 문자 배열로 변환
+	            char[] charArray = str.toCharArray();
+	            String result = ""; // 최종 결과를 담을 문자열
+	            boolean toUpperCase = true; // 대소문자 번갈아 적용 여부
+
+	            // 배열을 순회하며 변환 처리
+	            for (int i = 0; i < charArray.length; i++) {
+	                char ch = charArray[i];
+
+	                if (ch == ' ') { // 공백 처리
+	                    result += ch; // 공백은 그대로 추가
+	                    toUpperCase = true; // 공백 후 대문자로 시작
+	                } else if (ch == ',') { // 쉼표 처리
+	                    result += '!'; // 쉼표를 '!'로 변경
+	                    toUpperCase = true; // 쉼표 후 대문자로 시작
+	                } else {
+	                    if (toUpperCase) {
+	                        // 대문자로 변환 (소문자 a-z는 -32를 해서 대문자로)
+	                        if (ch >= 'a' && ch <= 'z') {
+	                            result += (char) (ch - 32);
+	                        } else {
+	                            result += ch; // 이미 대문자면 그대로 추가
+	                        }
+	                    } else {
+	                        // 소문자로 변환 (대문자 A-Z는 +32를 해서 소문자로)
+	                        if (ch >= 'A' && ch <= 'Z') {
+	                            result += (char) (ch + 32);
+	                        } else {
+	                            result += ch; // 이미 소문자면 그대로 추가
+	                        }
+	                    }
+	                    toUpperCase = !toUpperCase; // 대소문자 번갈아 변경
+	                }
+	            }
+
+	            return result; // 처리된 문자열 반환
+	        };
+
+	        // 메서드 실행 및 결과 출력
+	        String result = ci.method(inputValue);
+	        System.out.println(result);
+	    }
+	}

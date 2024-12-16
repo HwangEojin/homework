@@ -1,0 +1,89 @@
+package review;
+
+import java.util.Scanner;
+
+public class Task04 {
+
+//	
+//	JAV탕
+//	문제 1.
+//	★메소드로 계산기 만들기★
+//
+//
+	public static void main(String[] args) {
+
+//		사칙연산 실행
+//		조건
+//		1차원 2칸짜리 배열 생성
+//		사용자로부터 입력 받고(int형) 배열에 저장(for문으로 저장)
+//		메소드4개(더하기, 빼기, 곱하기, 나누기)
+//		리턴타입 O, 매개변수 O (매개변수는 배열로 전달)
+//		-> 더하기 메소드(for-each문 사용)
+//		-> 빼기 메소드(큰값 - 작은값)
+//		-> 곱하기 메소드(원하시는 대로)
+//		-> 나누기 메소드(실수형으로 형변환. 0번 인덱스/1번 인덱스.
+//		0으론 나눌 수 없음.)
+		
+		/*
+		 * logic
+		 * 
+		 * 덧셈 메소드는 parameter로 받은 배열값의 0번쨰, 1번째 인덱스를 for each로 누적 합산 하여 return
+		 * 뺄셈 메소드는 parameter로 받은 배열값의 0번째, 1번째의 값을 비교하여 max,min 값을 저장하고 max-min 값을 return;
+		 * 곱셈 메소드는 parameter로 받은 배열값의 0번째 ,1번째 값을 곱한 값을 return;
+		 * 나눗셈 메소드는 parameter로 받은 배열값이 0이 포함되어있는지 체크하고 0이 있다면 "0으로 나눌수 없음"이라고 표시
+		 * 0이 없다면 나눗셈 한 값을 출력 
+		 * 
+		 * 
+		 * */
+
+		
+		Task04 method = new Task04();									// 메소드 호출
+
+		Scanner scan = new Scanner(System.in);							// 입력 메소드 import
+
+		int array[] = new int[2];										// 배열의 길이가 2인 배열생성
+
+		for (int i = 0; i < array.length; i++) {						// 배열의 길이만큼 반복
+			array[i] = scan.nextInt();									// 입력 메소드로 입력값을 배열 i번째 index 에 저장
+		}
+		System.out.println("덧셈 결과 : " + method.addMethod(array));		// 메소드 호출과 return 값을 출력
+		System.out.println("뺄셈 결과 : " + method.minusMethod(array));	// 메소드 호출과 return 값을 출력
+		System.out.println("곱셈 결과 : " + method.multiplyMethod(array));// 메소드 호출과 return 값을 출력
+		System.out.println("나눗셈 결과 : " + method.divideMethod(array));// 메소드 호출과 return 값을 출력
+		;
+	}
+
+	int addMethod(int param[]) {	// parameter로 배열을 받음 
+		int sum = 0;				// 총합을 저장할 변수 선언
+		for (int i : param) {		// for - each 문으로 반복 수행
+			sum += i;				// 총합변수에 각 값을 누적합산
+		}
+		return sum;					// 합산 값 return
+	}
+
+	int minusMethod(int param[]) {
+		int min = 0;												// 최소값 선언 및 초기화
+		int max = 0;												// 최대값 선언 및 초기화
+
+		min = (param[0] < param[1]) ? param[0] : param[1];			// 배열의 값을 서로 비교하여 최소값 도출 
+		max = (param[0] > param[1]) ? param[0] : param[1];			// 배열의 값을 서로 비교하여 최대값 도출 
+
+		return max - min;											// 뺄셈 값 return
+	}
+
+	int multiplyMethod(int param[]) {								// 
+		return param[0] * param[1];
+	}
+
+	double divideMethod(int param[]) {
+		double result = 0;
+		if (param[0] == 0 || param[1] == 0) {
+			System.out.println("0으로 나눌수 없습니다.");
+		}
+		else {
+			result =  (double) param[0] / param[1];
+		}
+		return result;
+	}
+
+}

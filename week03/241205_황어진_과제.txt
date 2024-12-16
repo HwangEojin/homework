@@ -1,0 +1,255 @@
+1번 문제 class
+///////////////////////////////////////////////////////////////////////////////
+package task;
+
+public class Task {
+
+	/*
+	 * logic
+	 * 
+	 * field를 작성하여 동물의 속성을 정한다. String name int age String type
+	 * 
+	 * 모든 필드를 받는 생성자 선언 eat 메서드 -> ~가 밥을 먹습니다. 출력 play 메서드 -> ~가 놀고있습니다. 출력 sleep
+	 * 메서드 -> ~가 잡니다 추력 생일 축하 -> 생일 축하 메시지 출력
+	 */
+
+//	
+//	String name;									// 이름 속성
+//	int age;										// 나이 속성
+//	String type;									// 유형 속성
+//	
+//	
+//	public Task(String name, int age, String type) {	// 모든 필드를 매개변수로 받는 생성자 
+//		this.name = name;								// object 자신의 이름
+//		this.age = age;									// object 자신의 나이
+//		this.type = type;								// object 자신의 유형
+//	} 
+//	
+//	void eat() {										// 식사 메소드
+//		System.out.println(this.name+"(이)가 식사를 합니다.");// object의 name과 함께 출력
+//	}
+//	void play() {										// 놀기 메소드
+//		System.out.println(this.name+"(이)가 놀고 있습니다.");// object의 name과 함께 출력
+//	}
+//	void sleep() {										// 자기 메소드
+//		System.out.println(this.name+"(이)가 수면을 취합니다.");// object의 name과 함께 출력
+//	}
+//	void happyDay() {									// 생일축하 메소드
+//		System.out.println("오늘은 " + this.name + "의 생일입니다. 생일 축하 합니다.");// object의 name과 함께 출력
+//	}
+//	
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+2~3번 class
+
+
+package task;
+
+import java.util.Scanner;
+
+public class BasicTv {
+	/*
+	 * logic field 를 작성하여 tv의 속성을 정한다. boolean power int channel String color int
+	 * size int price - 모든 필드를 받는 생성자 powerOnOff 메서드 -> !power 로 호출될때마다 상태 변경
+	 * channelUp 메서드 -> channer++로 호출될때마다 채널1증가 channelDown 메서드 -> channel-- 로
+	 * 호출될때마다 채널 1감소 0이하는 처리 막기 //
+	 */
+	Scanner scan = new Scanner(System.in);
+
+	boolean power = false; // 전원 상태 속성, 기본값 false
+	int channel; // 채널 속성
+	String color; // 색깔 속성
+	int size; // 크기 속성
+	int price; // 가격 속성
+
+	public BasicTv(boolean power, int channel, String color, int size, int price) { // 모든 필드를 매개변수로 받는 생성자 생성
+		this.power = power;
+		this.channel = channel;
+		this.color = color;
+		this.size = size;
+		this.price = price;
+	}
+
+	void powerOnOff() { // 전원 변경 메소드
+		if (power == true) { // 만약 전원이 켜져있다면
+			power = false; // object의 power 상태를 변경하고 메시지 출력
+			System.out.println("전원이 꺼졌습니다.");
+		} else {
+			power = true; // object의 power 상태를 변경하고 메시지 출력
+			System.out.println("전원이 켜졌습니다.");
+		}
+		;
+
+	}
+
+	void channelUp() { // 채널 변경 메소드
+		if (power) { // 만약 전원이 켜져있다면
+			channel++; // channel의 값을 1증가시키고 메시지 출력
+			System.out.printf("현재 채널 : [ %d ]", channel);
+		} else { // 전원이 꺼져있다면
+			System.out.println("전원을 먼저 켜주세요."); // 메시지 출력
+		}
+		;
+	}
+
+	void channelDown() { // 채널 변경 메소드
+		if (power) { // 만약 전원이 켜져있다면
+			if (channel <= 1) {
+				System.out.println("더 이상 채널을 내릴 수 없습니다."); // 메시지 출력
+			} else {
+				channel--; // channel의 값을 1감소시키고 메시지 출력
+				System.out.printf("현재 채널 : [ %d ]", channel); // 현재 채널 출력
+			}
+		} else { // 전원이 꺼져있다
+			System.out.println("전원을 먼저 켜주세요."); // 메시지 출력
+		}
+	}
+
+	void TvController() {
+		power = true; // 최초 작동시 전원 on
+		boolean isLoop = true;
+		// 반복 flag
+		while (isLoop) {
+
+			System.out.println("=== TV 컨트롤 메뉴 ===\n" + "1. 전원 On/Off\n" + "2. 채널 올리기\n" + "3. 채널 내리기\n" + "4. 종료\n"
+					+ "메뉴 번호 입력 :");
+			int inputValue = scan.nextInt();
+
+			switch (inputValue) {
+			case 1: {		// 1번 입력시
+				powerOnOff();
+				break;
+			}
+			case 2: {		// 2번 입력시
+				channelUp(); // 채널 올리기 메소드 출력
+				break;
+			}
+			case 3: {		 //3번 입력시
+				channelDown(); // 채널 내리기 메소드 출력
+				break;
+			}
+			case 4: {		//4번 입력시
+				System.out.println("종료 합니다."); // 메시지 출력
+				isLoop = false;	// 반복flag를 false로 업데이트
+				break;
+			}
+			default:	// 예외 처리
+				System.out.println("올바른 메뉴 번호를 입력해주세요"); // 메시지 출력
+				break;
+			}
+
+		}
+
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+메인 메소드
+
+package task;
+
+
+public class TaskMain {
+
+	public static void main(String[] args) {
+
+//	1. 동물 클래스를 작성하세요
+//	 필드(속성) : '이름', '나이', '종류'라는 필드
+//	    - 이름 : 동물의 이름을 저장하는 곳
+//	    - 나이 : 동물의 나이를 저장하는 곳
+//	    - 종류 : 동물의 종류(개, 고양이, 새 등)를 저장하는 곳
+//	 메서드(행동)
+//	    - 밥먹기() : 동물이 밥을 먹는 행동을 하는 메서드
+//	    - 놀기() : 동물이 노는 행동을 하는 메서드
+//	    - 자다() : 동물이 자는 행동을 하는 메서드
+//	    - 생일축하() : 동물의 생일을 축하하는 메서드
+
+		/*
+		 * logic
+		 * 
+		 * field를 작성하여 동물의 속성을 정한다. String name int age String type
+		 * 
+		 * 
+		 * 모든 필드를 받는 생성자 선언 eat 메서드 -> ~가 밥을 먹습니다. 출력 play 메서드 -> ~가 놀고있습니다. 출력 sleep
+		 * 메서드 -> ~가 잡니다 추력 생일 축하 -> 생일 축하 메시지 출력
+		 */
+
+//	
+//	Task cow = new Task("소", 8, "포유류");
+//	Task cat = new Task("고양이", 2, "포유류");
+//	Task dog = new Task("개", 3, "포유류");
+//	Task goofy = new Task("물고기", 1, "어류");
+//	
+//	cow.eat();
+//	dog.play();
+//	cat.sleep();
+//	goofy.happyDay();
+//	
+//	
+
+//
+//	2. BasicTv 클래스를 작성하세요
+//	필드 :
+//	boolean power : TV 전원 상태 (기본값: false)
+//	int channel : TV 채널 (기본값: 1)
+//	String color : TV의 색상
+//	int size : TV의 크기
+//	int price : TV의 가격
+//
+//	메서드:
+//	void powerOnOff() : TV 전원을 켜거나 끄는 메서드
+//	      전원이 켜져 있으면 끄고, 꺼져 있으면 켜야 다른 동작이 가능하다
+//	void channelUp() : 채널을 1씩 증가시키는 메서드
+//	      채널 최대값 999
+//	void channelDown() : 채널을 1씩 감소시키는 메서드
+//	      채널 최소값 1
+//
+
+//	3. BasicTv 클래스와 함께 동작하는 TvController 프로그램을 작성하세요
+//	   프로그램은 사용자로부터 명령을 입력받아 TV를 제어한다
+//
+//	   BasicTv 객체를 생성하고, 초기값으로 색상 "Black", 크기 32인치, 가격 500000원을 설정
+//	   프로그램은 무한 반복(while)하며 사용자에게 다음 메뉴를 출력한다
+//
+//	=== TV 컨트롤 메뉴 ===
+//	1. 전원 On/Off
+//	2. 채널 올리기
+//	3. 채널 내리기
+//	4. 종료
+//	메뉴 번호 입력 : 
+//
+//	사용자가 메뉴 번호를 입력하면, 입력된 번호에 따라 다음 동작을 수행한다
+//	1 : powerOnOff() 메서드 호출
+//	   전원이 켜지면 "TV 전원이 켜졌습니다." 출력, 꺼지면 "TV 전원이 꺼졌습니다." 출력
+//	2 : TV 전원이 켜져 있으면 channelUp() 메서드 호출하고, "현재 채널: [채널 번호]"를 출력
+//	   꺼져 있으면 "TV 전원을 먼저 켜주세요." 메시지 출력
+//	3 : TV 전원이 켜져 있으면 channelDown() 메서드를 호출하고, "현재 채널: [채널 번호]"를 출력합니다. 꺼져 있으면 "TV 전원을 먼저 켜주세요." 메시지 출력
+//	그 외 : 프로그램을 종료하고 "프로그램을 종료합니다." 메시지 출력
+		
+
+		/*
+		 * logic
+		 * 
+		 * field 를 작성하여 tv의 속성을 정한다. boolean power int channel String color int size int price
+		 * 
+		 * 모든 필드를 받는 생성자
+		 * 
+		 * powerOnOff 메서드 -> !power 로 호출될때마다 상태 변경 channelUp 메서드 -> channer++로 호출될때마다 채널
+		 * 1증가 channelDown 메서드 -> channel-- 로 호출될때마다 채널 1감소 0이하는 처리 막기
+		 */
+		
+		BasicTv Tv = new BasicTv(false, 1, "black", 32, 500000);			// 객체 생성과 속성 입력
+		
+//		Tv.powerOnOff();													// 전원을 켜는 메소드 호출
+//		Tv.channelUp();														// 채널을 올리는 메소드 호출
+//		Tv.channelDown();													// 채널을 내리는 메소드 호출
+		Tv.TvController();													// 
+		
+	}
+}
