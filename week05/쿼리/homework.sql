@@ -1,218 +1,181 @@
---1. 모든 직원의 정보를 조회(단, 이름은 FIRST_NAME과 LAST_NAME을 띄어쓰기로 연결한 값을 이름이라는 별칭으로 표시)
+/* PLAYER 테이블에서 WEIGHT가 70이상이고 80이하인 선수 검색 */
+/* PLAYER 테이블에서 TEAM_ID가 'K03'이고 HEIGHT가 180 미만인 선수 검색 */
+/* PLAYER 테이블에서 TEAM_ID가 'K06'이고 NICKNAME이 '제리'인 선수 검색 */
+/* PLAYER 테이블에서 HEIGHT가 170이상이고 WEIGHT가 80이상인 선수 이름 검색 */
+/* STADIUM 테이블에서 SEAT_COUNT가 30000초과이고 41000이하인 경기장 검색 */
+/* PLAYER 테이블에서 TEAM_ID가 'K02'이거나 'K07'이고 포지션은 'MF'인 선수 검색 */
+/* PLAYER 테이블에서 POSITION이 NULL인 선수 검색 */
+/* PLAYER 테이블에서 NICKNAME이 NULL인 선수를 '없음'으로 변경하여 조회하기 */
+/* PLAYER 테이블에서 NATION이 등록되어 있으면 '등록', 아니면 '미등록'으로 검색 */
+/* PLAYER 테이블에서 POSITION이 NULL인 선수를 '미정'으로*/
 
 
-SELECT
-	employee_id,
-	first_name || ' ' || last_name 이름,
-	email,
-	phone_number ,
-	hire_date ,
-	job_id ,
-	salary ,
-	commission_pct ,
-	manager_id ,
-	department_id
-FROM
-	employees; 
-
---2. 모든 직원의 이름(FIRST_NAME)과 급여(SALARY)를 조회
-
-select 
-	first_name 이름,
-	salary 급여
-FROM 
-	employees; 
+/* PLAYER 테이블에서 포지션 종류 검색 */
+/* PLAYER 테이블에서 몸무게가 80이상인 선수들의 평균 키가 180초과인 포지션 검색 */
+/* EMPLOYEES 테이블에서 JOB_ID별 평균 SALARY가 10000미만인 JOB_ID 검색 JOB_ID는 알파벳 순으로 정렬(오름차순) */
+/* PLAYER_ID가 2007로 시작하는 선수들 중 POSITION별 평균 키를 조회 */
+/* 선수들 중 포지션이 DF 선수들의 평균 키를 TEAM_ID 별로 조회하고 평균 키 오름차순으로 정렬하기 */
+/* 포지션이 MF인 선수들의 입단연도 별 평균 몸무게, 평균 키를 구한다.
+ * 칼럼명은 입단연도, 평균 몸무게, 평균 키 로 표시한다.
+ * 입단연도를 오름차순으로 정렬한다.
+ * 단, 평균 몸무게는 70 이상 그리고 평균 키는 160 이상인 입단연도만 조회 */
+/* PLAYER 테이블에서 TEAM_ID가 'K01'인 선수 중 POSITION이
+ * 'GK'인 선수를 조회하기 SUB쿼리 사용하기 */
+/* PLAYER 테이블에서 평균 몸무게보다 더 많이 나가는 선수들 검색 (조건에 서브쿼리 사용) */
+/* PLAYER 테이블에서 정남일 선수가 소속된 팀의 선수들 조회*/
+/* PLAYER 테이블에서 평균 키보다 작은 선수 조회*/
+/*SCHEDULE 테이블에서 경기 일정이 
+ * 20120501 ~ 20120502 사이에 있는 경기장 전체 정보 조회*/
 
 
---3. 급여가 5000 이상인 직원들의 EMPLOYEE_ID, FIRST_NAME, SALARY를 조회
-
-select 
-	employee_id 직번,
-	first_name 이름,
-	salary 
-FROM 
-	employees; 
-
-
---4. 현재 날짜와 10일 후의 날짜를 조회(오라클 제공하는 기본 테이블 사용)
-
-
-select 
-	sysdate 현재날짜,
-	sysdate+ 10
-FROM 
-	dual; 
-
---5. DEPARTMENT_ID가 50인 직원들의 이름과 부서번호를 조회
+/*
+ * EMPLOYEE 테이블
+ * 핸드폰번호가 515로 시작하는 사원들의
+ * JOB_ID별 SALARY 평균을 구한다.
+ * 조회 컬럼은 부서, 평균 급여 로 표시한다.
+ * 평균 급여가 높은 순으로 정렬한다.
+ */
+/* COMMISSION_PCT 별 평균 급여를 조회한다.
+ * COMMISSION_PCT 를 오름차순으로 정렬하며 
+ * HAVING절을 사용하여 NULL은 제외한다.*/
 
 
-SELECT 
-	first_name 이름,
-	department_id 부서번호
-FROM 
-	employees
-WHERE
-	department_id =50;
+-- 1
+SELECT * 
+FROM player
+WHERE weight BETWEEN  70 AND 80;
 
---6. LAST_NAME이 'King'인 직원의 정보를 조회
+--2
+SELECT *
+FROM player
+WHERE HEIGHT < 180 AND TEAM_ID ='K03';
 
+--3
+SELECT *
+FROM player
+WHERE NICKNAME = '제리' AND TEAM_ID ='K06';
 
-SELECT 
-	*
-FROM 
-	employees
-WHERE
-	last_name = 'King';
+--4
+SELECT *
+FROM player
+WHERE HEIGHT >= 170 AND WEIGHT >= 80;
 
---7. SALARY가 NULL이 아닌 직원들의 정보를 조회
+--5
+SELECT * 
+FROM STADIUM
+WHERE SEAT_COUNT  > 30000 AND SEAT_COUNT <= 41000;
 
-SELECT 
-	*
-FROM 
-	employees
-WHERE
-	salary IS NOT NULL  ;
+--6
+SELECT *
+FROM player
+WHERE (TEAM_ID ='K02' OR  TEAM_ID ='K07') AND POSITION ='MF';
 
---8. 직원 테이블의 모든 직책(JOB_ID)을 중복 없이 조회
+--7
+SELECT *
+FROM player
+WHERE POSITION IS NULL;
 
+--8
+SELECT  PLAYER_NAME , NVL(NICKNAME,'없음') AS "닉네임"
+FROM player
+WHERE NICKNAME IS null;
 
-SELECT distinct 
-	job_id  직책
-FROM 
-	employees
-WHERE
-	salary IS NOT NULL  ;
+--9
+SELECT  PLAYER_NAME , NVL2(nation, '등록','미등록') AS "국적"
+FROM player;
 
-
---9. 급여가 3000에서 7000 사이인 직원의 FIRST_NAME, SALARY를 조회
-
-SELECT 
-	first_name 이름,
-	salary 급여
-FROM
-employees
-WHERE
-salary >=3000 AND salary <= 7000;
-
---10. 이름의 네 번째 문자가 'e'인 직원의 이름을 조회
-
-SELECT 
-	first_name 이름
-FROM
-employees
-WHERE
-first_name LIKE '___e%';
-
---11. JOB_ID가 'IT_PROG' 또는 'SA_REP'인 직원들의 이름과 직책을 조회
-
-SELECT 
-	first_name 이름,
-	job_id 직책아이디
-FROM
-	employees
-WHERE
-	job_id = 'IT_PROG' OR job_id ='SA_REP';
-
---12. 이름(FIRST_NAME)이 'A'로 시작하는 직원들의 정보를 조회
-
-SELECT 
-	*
-FROM
-	employees
-WHERE
-	first_name LIKE 'A%'; 
-
---13. SALARY가 10000 이상이고 DEPARTMENT_ID가 90인 직원의 이름과 급여를 조회
-SELECT 
-	first_name 이름 ,
-	salary 급여
-FROM
-	employees
-WHERE
-	salary >= 10000 AND department_id = 90; 
+--10
+SELECT player_name, NVL(POSITION, '미정') AS "포지션"
+FROM player;
 
 
---14. SALARY가 5000 이하이거나 DEPARTMENT_ID가 30인 직원의 정보를 조회
+--1
+SELECT DISTINCT POSITION
+FROM player;
 
+--2
 
-SELECT 
-	*
-FROM
-	employees
-WHERE
-	salary <= 5000 or department_id = 30; 
+SELECT POSITION,avg(height) "평균키"
+FROM PLAYER
+WHERE weight >= 80
+GROUP BY POSITION
+HAVING AVG(height) >180;
 
+--3
 
---15. LAST_NAME의 두 번째 문자가 'a'인 직원의 정보를 조회
-
-SELECT 
-	*
-FROM
-	employees
-WHERE
-	last_name like '_a%'; 
-
---16. SALARY를 기준으로 내림차순 정렬한 후 직원의 이름과 급여를 조회
-
-SELECT 
-	first_name || ' '|| last_name 이름,
-	salary 급여
-FROM
-	employees
-ORDER by
-	salary DESC; 
-
-
---17. 직원의 급여에 10%를 더한 값을 BONUS라는 별칭으로 조회
-
-SELECT 
-	salary * 1.1 BONUS
-FROM employees;
-
---18. SALARY가 6000 이상인 직원의 급여와 COMMISSION_PCT를 기준으로 정렬(급여는 내림차순, 커미션은 오름차순)
-
-SELECT 
-	salary 급여,
-	commission_pct 
+SELECT JOB_ID 
 FROM employees
-WHERE salary >6000
-ORDER by salary DESC,commission_pct ASC;  
+GROUP BY JOB_ID 
+HAVING AVG(SALARY) < 10000 
+ORDER BY job_id;
 
---19. 이름이 'A'로 시작하고 급여가 10000 이상인 직원들의 이름과 급여를 조회
+--4
+SELECT position, AVG(height) 
+FROM (SELECT POSITION, height FROM player WHERE player_Id LIKE '2007%')
+GROUP BY POSITION;
 
-SELECT 
-	first_name || ' '|| last_name 이름,
-	salary 급여
-FROM
-	employees
-WHERE
-	salary >=10000 AND
-	first_name LIKE 'A%';
+--5
+SELECT team_Id, AVG(height)
+FROM (SELECT POSITION, height ,team_id FROM player WHERE POSITION ='DF')
+GROUP BY team_id
+ORDER BY avg(height);
 
+--6
 
---20. 급여가 10000 이상 15000 이하이고, 부서 ID가 80 또는 90인 직원들의 이름, 급여, 부서 ID를 조회
+SELECT join_yyyy , player_name
+FROM (
+	SELECT position,weight, height,join_YYYY,player_name
+		FROM player 
+		WHERE POSITION ='MF'
+	)
+GROUP BY JOIN_YYYY
+HAVING AVG(weight) >= 70 AND avg(height) >= 160
+ORDER BY JOIN_YYYY; 
 
-SELECT 
-	first_name || ' '|| last_name 이름,
-	salary 급여,
-	department_id 부서Id
-FROM
-	employees
-WHERE
-	(salary >=10000 AND 15000>=salary) AND 
-	(department_id = 80 OR department_id =90)
-	;
-
-
---21. 입사일(HIRE_DATE)로부터 정확히 1년 후의 날짜를 계산하여 입사 1년 후라는 별칭으로 출력
-
-
-SELECT 
-	hire_date 입사일,
-	hire_date + 365 입사일년후
-FROM
-	employees;
+--7
+SELECT player_name, POSITION, team_id
+FROM (SELECT * FROM player WHERE team_Id = 'K01')
+WHERE POSITION = 'GK'
+;
 
 
+--8
+SELECT player_name
+FROM player
+WHERE  weight > (SELECT AVG(weight) FROM player)
 
+--9
+SELECT * 
+FROM player
+WHERE team_id = (SELECT team_id FROM player WHERE player_name ='정남일')
+;
 
+--10
+SELECT player_name 
+FROM player
+WHERE height >(SELECT AVG(height) FROM player);
+
+--11
+SELECT * 
+FROM STADIUM 
+WHERE STADIUM_ID in(SELECT STADIUM_ID FROM SCHEDULE WHERE sche_date ='20120501' OR sche_date ='20120502' )
+
+--12
+
+	SELECT department_id, 
+		(SELECT 
+			AVG(SALARY)
+			FROM EMPLOYEES e2 
+			WHERE PHONE_NUMBER LIKE '515%' AND e2.job_id = e.job_id 
+		) AS "평균 급여"
+	FROM employees e
+	GROUP BY DEPARTMENT_ID , JOB_ID
+	ORDER BY "평균 급여" DESC;
+;
+
+--13
+SELECT COMMISSION_PCT , AVG(SALARY) 
+FROM employees
+GROUP BY COMMISSION_PCT 
+HAVING COMMISSION_PCT  IS NOT null
+ORDER BY COMMISSION_PCT ;
