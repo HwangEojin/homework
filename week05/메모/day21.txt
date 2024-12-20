@@ -1,0 +1,108 @@
+day21
+
+1. DML2
+1) 외래키와 참조 무결성
+   외래키 : 다른 테이블의 기본키를 참조하는 키(컬럼)
+   PK(기본키)를 가진 테이블 : 참조할 테이블(부모테이블)
+   FK(외래키)를 가진 테이블 : 참조하는 테이블(자식테이블)
+   - 부모 테이블의 기본키를 자식 테이블에서 외래키로 사용하는 것
+
+   NULL값은 허용되지만 참조하는 테이블에 존재하지 않는 값은 허용되지 않는다(두 테이블에 존재하는 데이터가 동일하게 유지하는 참조 무결성)
+
+2) CASCADE
+   ON DELETE CASCADE : 부모 테이블에서 행(PK)을 삭제할 때 자식 테이블에서도 해당 PK를 참조하고 있는 행이 삭제된다
+      ALTER TABLE 자식테이블 ADD CONSTRAINT FK_테이블명 FOREIGN KEY(해당테이블의 컬럼명) 
+      REFERENCES 부모테이블명(부모테이블의 컬럼명) ON DELETE CASCADE;
+   ex) 게시판의 게시글(부모)과 댓글(자식) 관계
+
+   ON UPDATE CASCADE : 부모 테이블의 PK가 변경되면 참조하고 있는 자식 테이블의 FK값도 변경한다(오라클 사용 불가, MySQL 등 사용가능)
+   ex) 부모 테이블의 PK가 자주 변경될 가능성이 있을 때 유용
+   
+   DROP TABLE 부모테이블 CASCADE CONSTRAINT; 부모테이블을 참조하는 제약조건과 부모 테이블을 같이 삭제할 수 있다
+   - 참조 무결성을 강제로 무시하고 부모 테이블과 자식 테이블 간 관계를 강제로 종료할 때
+
+
+2. 집계함수
+	그룹화된 데이터를 집계 연산을 통해 하나의 결과로 얻게된다
+	집계함수는 NULL 값을 제외하고 진행된다
+
+	count() 	NULL 값을 포함한 행의 개수
+	count(컬럼명)	NULL 값을 제외한 행의 개수
+	sum([distinct | all] 표현식) NULL을 제외한 행의 합계
+	avg([distinct | all] 표현식) NULL을 제외한 행의 평균
+	max([distinct | all] 표현식) 최대값 (문자, 날짜도 가능)
+	min([distinct | all] 표현식) 최소값(문자, 날짜도 가능)
+	stddev([distinct | all] 표현식) 표준 편차
+	variance([distinct | all] 표현식) 분산
+
+
+
+2) select문 해석 및 작성 순서
+		
+	select [distinct] 컬럼명 [as 별칭]		---5
+	from 테이블명				---1
+	where 조건식				---2
+	group by 그룹화 기준 컬럼			---3
+	having 그룹에 대한 조건식			---4
+	order by 정렬 기준컬럼 [asc, desc];	---6
+
+	-select 절에 없는 컬럼을 order by 절에서 사용가능
+	-group by 절에서 그룹핑 기준을 정의하게 되면 group by 절의 그룹핑 기준에 사용된 컬럼과
+		집계함수에 사용될 수 있는 숫자형 데이터 컬럼들의 집합을 새로 만듬
+
+
+3) group by, having 절
+	group by 절은 특정 컬럼에 있는 값을 group으로 묶어서 데이터를 집계한다
+	order by 절과 동일하게 select 문에서 사용되며 위치는 where절 다음, order by 절 이전에 작성한다.
+	having 절은 group by 다음에 사용할 수 있으며 select의 where 절 처럼 group by 의 having 도 조건을 걸어준다
+
+	where 절은 쿼리문 전체에 조건을 걸어서 데이터를 가져오며
+	그 데이터들을 group by로 묶어주는데, 묶은 데이터에 대한 조건이 필요하면 Having 절에 작성하면 된다.
+
+	where 절은 집계함수가 불가능 하지만 having 절은 가능하다
+	where 절에 우선적으로 처리할 조건식을 작성해야 속도가 빠르다.
+3. 서브쿼리(SUB QUERY)
+   하나의 쿼리 내에 작성하는 또 다른 쿼리
+   서브쿼리의 위치에 따른 종류
+      - FROM 절 : INLINE VIEW
+      - SELECT 절 : SCALAR
+      - WHERE 절 : SUB QUERY
+
+1) 인라인 뷰(INLINE VIEW)   
+   FROM 절 안에 또 다른 쿼리를 작성한다
+   서브쿼리의 결과를 가상 테이블처럼 사용한다
+
+2) 스칼라 서브쿼리
+   SELECT 절 안에 또 다른 쿼리를 작성한다
+   단일 컬럼, 단일 행을 반환한다(1개의 값으로 사용)
+   
+3) 서브쿼리
+   WHERE절 또는 HAVLING 절 안에 또 다른 쿼리를 작성한다
+
+연관 서브쿼리
+   서브쿼리가 메인쿼리 컬럼을 가지고 있지 않은 경우
+   메인 쿼리와 독립적으로 실행될 수 있음
+
+   SELECT EMPLOYEE_ID, FIRST_NAME, SALARY
+   FROM EMPLOYEES
+   WHERE SALARY = (SELECT MAX(SALARY) FROM EMPLOYEES);
+
+
+비연관 서브쿼리
+   서브쿼리가 메인쿼리 컬럼을 가지고 있는 경우
+   메인쿼리의 각 행에 대해 반복 실행됨
+
+단일행 서브쿼리
+	서브쿼리의 결과가 하나의 행만 반환됨
+	사용연산자 : =,<,>,>=,<=,<> 등
+
+다중행 서브쿼리
+	서브쿼리의 결과가 여러 행을 반환함
+	사용연산자 : IN, ALL, ANY, SOME, EXISTS 등
+
+4. ROWNUM
+	결과 행 앞에 1부터 1씩 증가하는 시퀀스를 붙여준다
+	ROWNUM은 컬럼처럼 사용하면 된다.
+	*을 다른 컬럼과 함께 조회하게 되면 소속을 명시해줘야한다.
+	테이블에 alias를 부여하고 해당 별칭을 * 앞에 명시해준다.
+
