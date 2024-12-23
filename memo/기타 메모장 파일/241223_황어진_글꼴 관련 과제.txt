@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글꼴 관련 연습</title>
+</head>
+<body>
+  <h1>글꼴 관련 태그 연습</h1>
+  <bold>Bold text</bold><br/>
+  <strong>Bold Text</strong><br/>
+  <i>italic text</i><br/>
+  <em>emphasized text</em><br/>
+  <mark>mark text</mark><br/>
+  <small>small text</small><br/>
+  <del>취소선</del> deleted text<br/>
+  <ins>밑줄</ins> inserted text<br/>
+  This is <sup>superscript text</sup><br/>
+  This is <sub>subscript text</sub><br/>
+</body>
+</html>

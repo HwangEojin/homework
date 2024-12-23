@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문단 태그 연습</title>
+  </head>
+  <body>
+    <h1>문단 태그 연습</h1>
+    <p>p 태그 입니다.</p>
+    <p>p 태그 적용시 엔터로 줄바꿈해도 적용되지 않습니다.</p>
+    <p>p 태그에 줄바꿈 적용하고 싶으면<br />중간에 br태그를 사용합니다.</p>
+    <pre>
+    pre태그는 엔터가 모두 적용됩니다
+            줄바꿈이나 
+                띄어쓰기가 
+                html파일에서 작성한
+                  그대로 적용되어
+              출력됩니다
+  </pre
+    >
+    <h2>
+      <pre>
+pre 태그와
+                h2태그를 함께쓰면 그대로 적용됩니다.
+    </pre
+      >
+    </h2>
+  </body>
+</html>
