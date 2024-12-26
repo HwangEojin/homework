@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 정보 입력받기</title>
+  </head>
+
+  <body>
+    <h1>사용자 정보 입력</h1>
+    <form action="">
+      <fieldset>
+        <label for="name">이름</label>
+        <input type="text" id="name" autofocus /><br />
+        <label for="age">나이</label>
+        <input type="number" id="age" readonly /><br />
+        <label for="id">아이디</label>
+        <input
+          type="text"
+          id="id"
+          required
+          placeholder="아이디를 입력하세요"
+        /><br />
+        <label for="pw">패스워드</label>
+        <input
+          type="password"
+          id="pw"
+          required
+          placeholder="8자리 이상 대소문자포함"
+        />
+      </fieldset>
+      <fieldset>
+        <legend>취미</legend>
+        <label for="hobby1">독서</label>
+        <input type="radio" id="hobby1" name="hobby" />
+        <label for="hobby2">여행</label>
+        <input type="radio" id="hobby2" name="hobby" checked />
+        <label for="hobby3">게임</label>
+        <input type="radio" id="hobby3" name="hobby" />
+      </fieldset>
+      <fieldset>
+        <legend>과일선택</legend>
+        <label for="apple">사과</label>
+        <input type="checkbox" id="apple" name="fruit" checked />
+        <label for="banana">바나나</label>
+        <input type="checkbox" id="banana" name="fruit" />
+        <label for="orange">오렌지</label>
+        <input type="checkbox" id="orange" name="fruit" />
+      </fieldset>
+      <fieldset>
+        <legend>추가정보</legend>
+        <label for="">생년월일</label>
+        <input type="date" id="date" /><br />
+
+        <label for="country">국가 선택</label>
+        <select id="country" name="country">
+          <option value="kr">한국</option>
+          <option value="us">미국</option>
+          <option value="jp">일본</option>
+          <option value="cn">-쭝-</option>
+        </select>
+
+        <label for="file">프로필 사진 업로드</label>
+        <input type="file" id="file" />
+      </fieldset>
+      <fieldset>
+        <legend>추가 의견</legend>
+        <label for="comment" >의견을 작성해 주세요</label
+        ><br />
+        <textarea cols="50" rows="5" placeholder="여기에 의견을 작성하세요"></textarea>
+      </fieldset>
+      <input type="submit" value="제출" />
+      <button type="button">버튼</button>
+    </form>
+  </body>
+</html>

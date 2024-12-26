@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>semantic</title>
+
+    <style>
+
+      /* Color Theme Swatches in Hex */
+      .Stemtracks-1-hex {
+        color: #252273;
+      }
+      .Stemtracks-2-hex {
+        color: #635ef2;
+      }
+      .Stemtracks-3-hex {
+        color: #1e2159;
+      }
+      .Stemtracks-4-hex {
+        color: #c4d977;
+      }
+      .Stemtracks-5-hex {
+        color: #0d0d0d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 80vh;
+      }
+
+      header {
+        background-color: #e7bdf2;
+        text-align: center;
+        font-size: 46px;
+        font-weight: 700;
+        color: white;
+        padding: 10px 0;
+      }
+      nav > ul {
+        display: flex;
+        margin-left: 10px;
+      }
+      li {
+        list-style-type: none;
+        font-size: 18px;
+        margin-right: 20px;
+      }
+      main {
+        display: flex;
+        background-color: #d8e0f2;
+        height: 100%;
+      }
+      .sectionWrap {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      section {
+        background-color: #2469a6;
+        width: 500px;
+        height: 300px;
+      }
+
+      section:nth-child(1) {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      section:nth-child(2) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      footer {
+        background-color: #056cf2;
+        font-size: 46px;
+        font-weight: 700;
+        text-align: center;
+        color: white;
+        padding: 10px 0;
+      }
+
+      aside {
+        width: 120px;
+        background-color: #daa0f2;
+        font-size: 44px;
+        font-weight: 700;
+        text-align: center;
+        color: white;
+        line-height: 80vh;
+      }
+
+      article {
+        background-color: beige;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        font-weight: 700;
+        text-align: center;
+        color: #888;
+      }
+
+      section:nth-child(2) > article {
+        width: 45%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>Header</div>
+      <nav>
+        <ul>
+          <li>nav munu1</li>
+          <li>nav menu2</li>
+          <li>nav menu3</li>
+          <li>nav menu4</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <aside>Aside</aside>
+      <div class="sectionWrap">
+        <section>
+          <article>Article1</article>
+          <article>Article2</article>
+          <article>Article3</article>
+        </section>
+        <section>
+          <article>Article4</article>
+          <article>Article5</article>
+          <article>Article6</article>
+          <article>Article7</article>
+        </section>
+      </div>
+    </main>
+    <footer>Footer</footer>
+  </body>
+</html>

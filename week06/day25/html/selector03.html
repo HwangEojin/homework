@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li::first-letter{
+      color: red;
+    }
+    li:last-child::after{
+      content: "NEW";
+      color: white;
+      background-color: gold;
+      font-size: 20px;
+    }
+   
+  </style>
+</head>
+<body>
+  <main>
+    <ul>
+      <li>리스트1</li>
+      <li>리스트2</li>
+      <li>리스트3</li>
+    </ul>
+  </main>
+</body>
+</html>

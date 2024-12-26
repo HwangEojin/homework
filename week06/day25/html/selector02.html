@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>selector02</title>
+    <style>
+      a:link {
+        color: red;
+      }
+      a:visited {
+        color: black;
+      }
+      a:hover {
+        color: yellow;
+      }
+      a:first-child{
+        font-size: 30px;
+      }
+      a:last-child{
+        font-size: 50px;
+      }
+      a:nth-child(2){
+        font-size: 100px;
+      }
+      a:not(a:nth-child(2)){
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <a href="selector01.html" target="_blank">링크1</a>
+        <a href="aa">링크2</a>
+        <a href="">링크3</a>
+        <a href="">링크4</a>
+        <a href="">링크5</a>
+      </div>
+    </main>
+  </body>
+</html>

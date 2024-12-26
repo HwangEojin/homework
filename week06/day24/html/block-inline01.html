@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css 스타일</title>
+
+  <style>
+    
+    :root{
+      --color1 : #ff1122;
+    }
+    *{
+      font-size: 25px;
+    }
+
+    h1{
+      color: var(--color1);
+      background-color: yellow;
+    }
+    #span-id{
+      color : darkgoldenrod;
+    }
+    .p-class{
+      background-color: skyblue;
+    }
+ 
+
+
+
+  </style>
+
+</head>
+<body>
+  <h1>id와 class 속성</h1>
+  <span id="span-id">span 요소 1</span>
+  <span style="color:red; background-color:beige;">span 요소 2</span>
+  <p class="p-class">p요소1</p>
+  <p style="color: blue; background-color: beige;">p요소2</p>
+
+  <!-- div{div요소$}*2 -->
+  <div>div요소1</div>
+  <div style="color: darkblue; background-color: beige;">div요소2</div>
+
+</body>
+</html>

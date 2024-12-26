@@ -1,0 +1,89 @@
+<!-- 5번 : 테이블태그2 colspan, rowspan 속성 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 태그2</title>
+  </head>
+  <body>
+    <h1>테이블 확장 속성</h1>
+
+    <table border="1" cellspacing="0">
+      <!-- 테이블 헤더 -->
+      <thead>
+        <tr>
+          <th colspan="3">학생성적표</th>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <th>과목</th>
+          <th>점수</th>
+        </tr>
+      </thead>
+      <!-- 테이블 바디 -->
+      <tbody>
+        <tr>
+          <td rowspan="2">짱구</td>
+          <td>수학</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>영어</td>
+          <td>88</td>
+        </tr>
+        <tr>
+          <td rowspan="2">철수</td>
+          <td>수학</td>
+          <td>88</td>
+        </tr>
+        <tr>
+          <td>철수</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>상품 확인</h1>
+    <table
+      border="1"
+      cellspacing="0"
+      width="500"
+      height="300"
+      style="text-align: center; background-color: yellow"
+    >
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>카테고리</th>
+          <th colspan="2">상품정보</th>
+          <!-- <th>설명</th> -->
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td rowspan="2">전자기기</td>
+          <td>노트북</td>
+          <td>최신형 게이밍 노트북</td>
+          <td>1,500,000원</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <!-- <td>전자기기</td> -->
+          <td>스마트폰</td>
+          <td>최신 핸드폰 기기</td>
+          <td>1,900,000원</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>가구</td>
+          <td colspan="2">원목테이블</td>
+          <!-- <td></td> -->
+          <td>500,000원</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform</title>
+  <style>
+      div{
+        border : 1px solid black;
+        background-color: olive;
+        color: wheat;
+        font-size: 25px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        margin: 10px 0;
+      }
+
+      .div1{
+        transform: translate(30px, 30px);
+      }
+      .div2{
+        transform: scale(2,0.5);
+      }
+      .div3{
+        transform: rotate(30deg);
+      }
+      .div4:hover{
+        transform: scale(1.5,1.5);
+        background-color: red;
+      }
+      .div5:hover{
+        transform: rotate(85deg);
+      }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="div1">div1</div>
+    <div class="div2">div2</div>
+    <div class="div3">div3</div>
+    <div class="div4">div4</div>
+    <div class="div5">div5</div>
+  </main>
+</body>
+</html>
