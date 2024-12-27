@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #8596F2;
+
+}
+
+.depth1 {
+  width: 100%;
+  display: flex;
+  font-size: 24px;
+  color: white;
+  font-weight: 800;
+  line-height: 50px;
+
+}
+
+.depth1-list {
+  list-style-type: none;
+  margin-right: 50px;
+  position: relative;
+
+}
+.depth1-list:first-child{
+  margin-left: 50px;
+}
+
+.depth2-1,
+.depth2-2,
+.depth2-3,
+.depth2-4 {
+  display: none;
+  position: absolute;
+  left: -10px;
+  width: 100px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.depth2-list {
+  list-style-type: none;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  line-height: 50px;
+  border-bottom: 1px solid #888;
+}
+
+#home {
+  width: 120px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  background-color: #656FA6;
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.container {
+  display: flex;
+}
+
+.depth1-list:nth-child(1):hover .depth2-1 {
+  display: block;
+}
+
+.depth1-list:nth-child(2):hover .depth2-2 {
+  display: block;
+}
+
+.depth1-list:nth-child(3):hover .depth2-3 {
+  display: block;
+}
+
+.depth1-list:nth-child(4):hover .depth2-4 {
+  display: block;
+}
