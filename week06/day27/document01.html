@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementById</title>
+  </head>
+  <body>
+    <div id="myDiv">div 요소</div>
+    <p></p>
+  </body>
+  <script>
+    const myDiv = document.getElementById("myDiv");
+    console.log(myDiv, typeof myDiv);
+
+    const p1 = document.querySelector("p");
+    console.log(p1, typeof p1);
+    p1.innerText = myDiv.textContent;
+  </script>
+</html>

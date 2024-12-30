@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementByTagName</title>
+  </head>
+  <body>
+    <h1>DOM 연습중입니다</h1>
+    <p>p태그는 paragraph의 약자입니다.</p>
+    <div>div 태그 1번째</div>
+    <div>div 태그 2번째</div>
+    <div>div 태그 3번째</div>
+    <div>div 태그 4번째</div>
+    <div>div 태그 5번째</div>
+    <div>div 태그 6번째</div>
+  </body>
+  <script>
+    const result = document.getElementsByTagName("div");
+    console.log(result);
+    for (let i = 0; i < result.length; i++) {
+      console.log(result[i].innerHTML);
+
+    }
+  </script>
+</html>
