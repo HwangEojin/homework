@@ -5,8 +5,12 @@
 
 header {
   background-color: #8596F2;
-
 }
+
+body{
+  background-color: #f0f0f0;
+}
+
 
 .depth1 {
   width: 100%;
@@ -22,19 +26,23 @@ header {
   list-style-type: none;
   margin-right: 50px;
   position: relative;
+  padding: 0 10px;
 
 }
-.depth1-list:first-child{
+.depth1-list:hover{
+  background-color: #656FA6;
+}
+
+.depth1-list:first-child {
   margin-left: 50px;
 }
 
 .depth2-1,
 .depth2-2,
-.depth2-3,
-.depth2-4 {
+.depth2-3{
   display: none;
   position: absolute;
-  left: -10px;
+  left: -3px;
   width: 100px;
   background-color: white;
   border-radius: 10px;
@@ -75,9 +83,5 @@ header {
 }
 
 .depth1-list:nth-child(3):hover .depth2-3 {
-  display: block;
-}
-
-.depth1-list:nth-child(4):hover .depth2-4 {
   display: block;
 }

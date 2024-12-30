@@ -1,0 +1,47 @@
+<!-- # 2. to-do list만들기
+
+- 파일명 : todo.html, todo.css
+- 페이지 제목 "To-Do List"로 설정
+- CSS파일 따로 만들어서 링크걸기
+- 헤더 생성 : 페이지 헤더를 만들기
+헤더에 <h1> 요소를 사용하여 "To-Do List"라는 제목 표시
+헤더에 <nav> 요소를 만들고, 그 안에 목록 형태로 "지난 할일 목록," "오늘 할일 목록," "내일 할일 목록" 네비게이션 항목을 추가
+각 항목은 클릭시 이동할 수 있는 태그로 만들 것
+- 본문 구성	<main> 요소를 사용하여 본문 만들기
+본문에 <h2> 요소를 사용하여 "Tasks"라는 제목 추가
+본문에 <ul> 요소를 사용하여 할일 목록 만들기
+할 일 항목은 텍스트로 표시되어야 한다
+3가지 할  항목을 추가하고, 일부 항목은 완료 표시를 하기 위해 <span> 요소에 클래스 "completed" 추가
+- CSS 코드를 사용하여 페이지 스타일을 설정(배경색, 글자색, 여백 등)
+헤더와 네비게이션의 배경색과 글자색을 설정하여 대조적이고 명확하게 만들기
+일 항목이 완료된 경우 "completed" 클래스를 사용하여 텍스트에 취소선을 추가하고 글자색을 변경할것 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <header>
+        <h1>To-Do List</h1>
+        <nav>
+            <ul class="todo-list">
+                <li class="todo-list-items"><a href="#">지난 할일 목록</a></li>
+                <li class="todo-list-items"><a href="#">오늘 할일 목록</a></li>
+                <li class="todo-list-items"><a href="#">내일 할일 목록</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Tasks</h2>
+        <ul class="task-list">
+            <li class="task-list-items">할 일 항목 1</li>
+            <li class="task-list-items">할 일 항목 2</li>
+            <li class="task-list-items completed">할 일 항목 3</li>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Serif';
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+}
+nav{
+    width: 600px;
+    margin : 100px auto 50px;
+}
+.todo-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todo-list-items{
+    width: 150px;
+    list-style: none;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+}
+.task-list-items{
+    width: 90%;
+    margin: 20px auto;
+    list-style: none;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #888;
+    text-align: left;
+}
+
+.todo-list-items>a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+main{
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    margin : 50px auto 0;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.completed::after {
+    content: "완료";
+    margin-left: 10px;
+}

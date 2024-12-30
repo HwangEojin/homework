@@ -65,9 +65,8 @@ console.log(colors);
 //  주어진 배열의 값을 객체의 value 속성으로 저장할것
 const data = [10, 20, 30];
 
-const object ={};
-object.value = data;
-console.log(object,"object");
+const newData = data.map(item => ({ value: item }));
+console.log(newData);
 
 //2) 배열을 활용하여 특정값을 기준으로 객체 업데이트하기
 const users = [
@@ -78,10 +77,10 @@ const users = [
 
 //id가 2인 객체의 나이를 6으로 변경, subject를 'web표준'으로 변경
 
-
-
-
-
+const updatedUsers = users.map(user =>
+  user.id === 2 ? { ...user, age: 6, subject: "web표준" } : user
+);
+console.log(updatedUsers);
 
 
 //3) 배열의 요소를 모두 더하여 총합 출력하기
