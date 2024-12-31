@@ -1,0 +1,30 @@
+<!-- 실습3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>아이템1</li>
+    <li>아이템2</li>
+    <li>아이템3</li>
+  </ul>
+</body>
+<script>
+  //클래스이름을 추가하고 li요소의 텍스트를 "새 아이템입니다"로 변경하기
+  //첫번째 li요소에는 css선택자를 사용하여 글자 색상을 red로 변경하기
+  const li = document.querySelectorAll("li");
+  console.log(li);
+
+  li.forEach((item) => {
+    item.classList.add("item");
+    item.innerText = "새 아이템입니다";
+  });
+
+  const firstli = document.querySelector("li");
+  firstli.style.color = "red";
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!-- 실습4 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>항목1</li>
+    <li>항목2</li>
+    <li>항목3</li>
+    <li>항목4</li>
+  </ul>
+</body>
+<script>
+  //getElementsByTagName을 사용하여 모든 li요소 선택하기
+  //선택된 모든 li요소에 list-item 클래스 추가하기
+  //마지막 li요소의 배경색을 lightblue로 변경하기
+  
+  const li = document.getElementsByTagName("li");
+  for (let i = 0; i < li.length; i++) {
+    li[i].classList.add("list-item");
+  }
+  li[li.length-1].style.backgroundColor='lightblue'
+</script>
+</html>

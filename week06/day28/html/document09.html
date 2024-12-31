@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>id를 이용한 선택</title>
+  </head>
+
+  <body>
+    <div>
+      <div id="odd">1번째</div>
+      <div>2번째</div>
+      <div id="odd">3번째</div>
+    </div>
+  </body>
+  <script>
+    console.log(document.getElementById("odd"));
+    document.getElementById("odd").style.color="blue";
+  </script>
+</html>

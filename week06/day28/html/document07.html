@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - 클래스 이름을 이용한 선택</title>
+    <style>
+      .even{
+        background-color: aqua;
+      }
+      .odd{
+        background-color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>클래스 이름을 이용한 선택</h1>
+    <div>
+      <ul>
+        <li class="item">1번째 아이템입니다.</li>
+        <li class="item">2번째 아이템입니다.</li>
+        <li class="item">3번째 아이템입니다.</li>
+        <li class="item">4번째 아이템입니다.</li>
+        <li class="item">5번째 아이템입니다.</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // const items = document.querySelectorAll(".item");
+    // items.forEach((item, index) => {
+    //   if (index % 2 === 0) {
+    //     item.classList.add("even");
+    //   } else {
+    //     item.classList.add("odd");
+    //   }
+    // });
+    const items = document.getElementsByClassName('item');
+  
+    console.log(items);
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
+    //HTML Collection의 프로토타입에 forEach메소드를 Array의 forEach로 설정한 부분
+    //40번 라인 한줄이 추가되면 HTMLCOllection 객체에서도 forEahc 메소드를 사용할 수 있다.
+    //HTMLCollection 객체는 forEach 메소드에 직접 접근이 불가능하기 때문에 추가대입해서 사용해야한다.
+
+
+    items.forEach((item, index) => {
+      if (index % 2 === 0) {
+        item.classList.add("even");
+      } else {
+        item.classList.add("odd");
+      }
+    })
+
+    const color = {even : "blue", odd:"red"};
+    console.log(color);
+
+    items.forEach(item=>{
+      const className = item.classList.contains("even") ? 'even' : 'odd';
+      item.style.color = color[className];
+    })
+  </script>
+</html>

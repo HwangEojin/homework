@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementByName</title>
+  </head>
+  <body>
+    <input type="text" name="이름" value="짱구">
+    <input type="text" name="나이" value="5">
+    <input type="text" name="id">
+    <input type="text" name="password">
+  </body>
+  <script>
+    const result = document.getElementsByName("이름"); //nodeList
+    console.log(result);  //nodeList
+    console.log(result[0]); // 태그
+    console.log(result[0].value); // 입력된 값
+  </script>
+</html>

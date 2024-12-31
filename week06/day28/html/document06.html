@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>querySelectorAll</title>
+  </head>
+  <body>
+    <h1>과일리스트</h1>
+    <ol>
+      <li>사과</li>
+      <li>오렌지</li>
+      <li>귤</li>
+      <li>포도</li>
+      <li>복숭아</li>
+    </ol>
+  </body>
+  <script>
+    const result = document.querySelectorAll("ol li");
+    console.log(result)
+    result.forEach(function(item){
+      console.log(item.innerHTML);
+    })
+  </script>
+</html>

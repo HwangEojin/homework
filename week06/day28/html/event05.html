@@ -1,0 +1,52 @@
+<!-- 18번 : 체크박스 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>체크박스</title>
+</head>
+<body>
+  <label><input type="checkbox" name="선택" value="선택1">선택1</input></label>
+  <label><input type="checkbox" name="선택" value="선택2">선택2</input></label>
+  <label><input type="checkbox" name="선택" value="선택3">선택3</input></label>
+  <p id="result"></p>
+</body>
+<script>
+  //3개의 체크박스 중 선택한 체크박스의 값을 가져와서 p태그에 출력
+  //appendChild(), removeChild()
+
+  NodeList.prototype.filter = Array.prototype.filter;
+
+  //체크박스 전체 가져오기
+  const checkboxs = document.querySelectorAll("input[type=checkbox]");
+  console.log(checkboxs);
+
+  //체크된 value를 담아줄 p태그 가져오기
+  const result = document.querySelector("#result");
+
+  checkboxs.forEach((checkbox) => {
+    checkbox.addEventListener("click", (e) => {
+      if(e.target.checked){
+        const strong = document.createElement("strong");
+        console.log(e.target);
+        strong.innerText = e.target.value;
+        result.appendChild(strong);
+      }else{
+        //#result 요소 안에 있는 모든 strong 요소를 찾고 strongs변수에 NodeList로 저장
+        const strongs = document.querySelectorAll("#result strong");
+        const target = strongs.filter((strong) =>
+        //strong.innerText : <strong>요소의 텍스트 내용
+        //e.target.value : 체크박스의 value
+        strong.innerText == e.target.value
+      )[0];
+      //filter 메소드는 조건을 만족하는 모든 요소를 배열로 반환
+      //첫번째 요소만 필요하니까 배열의 첫번째 요소를 선택
+        result.removeChild(target);
+      //target으로 선택된 <strong> 요소를 result에서 제거
+      }
+    });
+  });
+
+</script>
+</html>

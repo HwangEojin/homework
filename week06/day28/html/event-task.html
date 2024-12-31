@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="button1">Click Me</button>
+    <button id="button2">Click Me</button>
+    <button id="button3">Click Me</button>
+    <button id="button4">Click Me</button>
+  </body>
+  <script>
+    const button1 = document.querySelector("#button1");
+    let counter = 0;
+    button1.addEventListener("click", () => {
+      counter++;
+      button1.innerText = counter;
+      console.log(`button 클릭 : ${counter}`)
+    });
+    //각 버튼마다 클릭이벤트 주기(배경 색상 자유롭게 변경)
+    //각 버튼을 클릭했을 때마다 몇번 클릭했는지 콘솔창에 입력되도록하기
+    with (button1.style) {
+      backgroundColor = "salmon";
+    }
+
+    //색상 객체
+    const color ={
+      button1 : 'red',
+      button2 : 'blue',
+      button3 : 'green',
+      button4 : 'yellow'
+    }
+
+    const clickCount = {};
+
+//모든 버튼에 이벤트 리스너 추가
+document.querySelectorAll('button').forEach(button => {
+  //각 버튼의 클릭 횟수 0으로 초기화
+  clickCount[button.id] = 0;
+  //클릭 이벤트 추가
+  button.addEventListener('click', ()=>{
+    //클릭횟수 추가
+    clickCount[button.id]++;
+    //배경색 변경
+    button.style.backgroundColor = colors[button.id];
+    //콘솔에 클릭횟수 출력
+    console.log(`${button.id} 클릭 ${clickCount[button.id]}번`);
+    
+  });
+})
+
+  </script>
+</html>

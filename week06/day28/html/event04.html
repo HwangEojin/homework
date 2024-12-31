@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>키 이벤트</title>
+  </head>
+  <body>
+   <input type="text" name="name" placeholder="이름을 입력하세요">
+   <p id="name"></p>
+  </body>
+  <script>
+    const name = document.querySelector("input[name='name']");
+    const p = document.querySelector("#name");
+
+    // keyup : 키를 눌렀다가 뗄 때 발생
+    // keydown : 키를 누르는 순간 발생
+    // keypress : 문자 입력 중심의 이벤트 (최신 표준에서는 사용 지양)
+    name.addEventListener('keyup',(e)=>{
+      //e : 이벤트 객체, 이벤트 핸들러로 전달된 객체로 이벤트의 관련한 정보를 포함한다.
+      //e.target.value : 이벤트 발생한 입력 필드의 현재값을 가져온다.
+      p.innerText = e.target.value;
+    })
+  </script>
+</html>
