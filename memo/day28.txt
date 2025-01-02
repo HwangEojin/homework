@@ -1,0 +1,157 @@
+day 28
+
+1.DOM
+	1) DOM (Document Object Model)
+		html태그를 하나씩 객체화 한 것을 의미한다.
+		html 페이지 내용과 모양을 제어하기 위해 사용하는 객체이며 HTML 태그 당 DOM 객체가 하나씩 생성된다
+		HTML 태그의 포함관계에 따라서 부모, 자식, 형제 관계로 구성된다.
+
+	2) DOM  selector 종류
+		document.getElementById("Id명")
+		document.getElementByClassName("class명")
+		document.getElementByTagName("Tag명")
+
+		document.getElementByName("Name")
+		document.querySelector('선택자')
+		document.querySelectorAll('선택자')
+
+	3) innerHtml과 innerText
+		요소의 내용을 조작할 때 사용하는 속성
+	
+	-innerHTML
+		요소의 내부 HTML을 나타내는 속성
+		HTML 태그를 포함한 요소의 내용을 변경할 수 있다.
+		ex) const test = document.getElementById("test");
+			test.innerHTML="<strong>안녕</strong>"
+
+	-innerText
+		요소의 텍스트 내용을 나타내는 속성
+		HTML 태그를 고려하지 않고 텍스트 내용만 조작할 수 있다.
+		ex) const test = document.getElementById("test");
+			test.innerText="안녕하세요";
+
+
+	4) 이벤트
+		발생한 사건을 의미한다
+		사용자가 버튼을 클릭하거나, 항목을 선택하는 등의 사건의 이벤트라고 한다
+		이벤트가 발생하면 자바스크립트의 코드가 실행되도록 구현하여 사용자와 상호작용하는 페이지를 만들 수 있다.
+
+	- 마우스 이벤트
+		click : 요소를 클릭하면 발생
+		mouseover : 마우스 커서를 해당 요소에 올리면 발생
+		mouseout : 마우스 커서가 해당 요소의 영역을 벗어나면 발생
+
+	- 키보드 이벤트
+		keydown : 키보드를 누르는 동안 발생
+		keyup: : 키보드를 눌렀다가 뗄 때 발생
+		keypress : 키보드를 눌렀을 때 발생
+		...
+
+	- 문서 로딩 이벤트
+		load : 문서(웹페이지)가 로딩이 끝나면 발생
+		unload : 문서를 벗어날 때 발생
+		scroll : 문서가 스크롤되면 발생
+		
+	-폼 이벤트
+		입력이 가능한 요소의 이벤트들을 의미
+		focus : 폼 요소에 포커스가 되면 발생
+		blur : 포커스를 잃으면 발생
+		change : 입력값이 바뀌거나 체크상태가 되면 발생
+		submit : submit 버튼을 누르면 발생
+		...
+
+
+2. DOM과 이벤트
+	기본의 이벤트 처리방식은 HTML 코드에 자바스크립트를 사용하였다
+	가독성과 유지보수에 좋지 않다
+	DOM을 사용하여 자바스크립트에 HTML요소를 불러와 이벤트를 처리할 수 있다.
+
+	1) DOM 사용하기
+		document.메소드()
+		DOM에서는 HTML요소를 선택자를 이용해 접근하는 여러 메소드를 제공한다.
+
+	-getElementById("id명")
+		태그의 id속성으로 해당 요소를 가져온다
+		id는 중복을 허용하지 않는다. 메소드의 결과는 객체 1개이다.
+
+	-getElementsByClassName("class이름")
+		태그의 class속성으로 해당 요소를 가져온다
+		class는 여러 요소가 같은 값을 가질 수 있으므로 메소드의 결과는 여러 객체를 담은 배열이다.
+		forEach 사용 불가능 (HTML Collection)
+
+	-getElementsByTagName("tag명")
+		태그 이름을 가진 모든 요소를 가져온다
+		태그는 여러 요소가 같은 값을 가질 수 있으므로 메소드의 결과는 여러 객체를 담은 배열이다.
+	
+	-getElementByName("name")
+		name 속성으로 해당 모든 요소를 가져온다
+	
+	-querySelector("선택자")
+		id, class외에도 여러 방법으로 요소를 가져올 수 있다.
+		css 선택자를 활용하면 되므로 id는 #으로 class는 .으로 사용하여 선택자를 작성한다.
+		1개의 요소를 가져올때 사용한다.
+
+	-querySelectorAll("선택자")
+		id, class외에도 여러 방법으로 요소를 가져올 수 있다.
+		css 선택자를 활용하면 되므로 id는 #으로 class는 .으로 사용하여 선택자를 작성한다.
+		여러개의 요소를 가져올때 사용하며 메소드의 결과는 객체를 담은 배열을 반환한다.
+
+	* 요소 내용 가져오기, 수정하기
+	
+	-요소.innerHTML
+		요소의 text와 내부 태그까지 수정가능하다, 요소의 text를 가져와서 콘솔에 출력된다.
+	
+	-요소.innerText
+		요소의 text를 수정가능하다.
+
+	* 요소 속성 가져오기, 수정하기, 삭제하기
+
+	-요소.getAttribute('속성명')
+		해당 요소의 특정 속성을 가져온다.(태그의 속성을 가져올 때 사용한다.)
+
+	-요소.setAttribute('속성명','값')
+		해당 요소의 특정 속성과 값을 설정한다.
+	
+	-요소.removeAttribute('속성명')
+		요소에서 특정 속성을 제거한다.
+
+	*HTML 요소 프로퍼티 직접 수정하기
+
+	-요소.style.속성명 = '값';
+		style 프로퍼티를 이용하여 직접 수정한다.
+		속성명은 css속성명과 동일
+		단, -는 사용하지 않으며 카멜 표기법을 사용한다.
+
+
+	2) DOM을 활용한 이벤트 처리
+	-DOM 요소에 이벤트 핸들러를 직접 연결시키기
+		※ 이벤트 핸들러 : 이벤틀르 처리하는 함수를 이벤트 핸들러라고 한다.
+		요소.on이벤트명 = 함수;
+
+	-addEventListner()메소드 사용하기
+		요소.addEventListener(이벤트,함수);
+		하나의 요소에 여러 이벤트를 연결할 수 있으며 가독성도 더 좋다.
+
+3. DOM TREE
+	DOM은 웹문서의 구조와 정보들을 트리형태로 저장한다	
+	DOM 트리를 구성하는 하나하나의 요소를 노드라고 하고 최상위 노드를 root 노드라고 한다
+	DOM 트리의 최상위 노드는 document 노드이고 각 노드들은 위치에 따라 부모, 자식, 형제, 조상 노드라고 한다
+	태그들만 노드로 존재하는 것이 아닌 태그들의 속성이나 컨텐츠들도 해당 태그의 자식 노드로 존재한다
+	속성은 어트리뷰트 노드 , 텍스트는 텍스트 노드라고 부른다.
+	
+4. 라이트박스
+	라이트 박스는 여러 사이트에서 사용하는 효과이다.
+	작은 이미지를 클릭하면 큰 사진으로 보여주는 등 여러 상황에서 활용 할 수 있다.	
+	
+	1) data 속성
+		data-데이터이름 ='데이터'
+		브라우저를 무시하는 속성이므로 특별한 기능은 없으며 개발자가 필요한 데이터를 저장하는 속성이다.
+		자바스크립트에서는 data 속성을 가져와서 사용할 수 있다.
+
+	2) data 속성 사용 방법
+		요소.getAttribute('data-데이터이름')
+		요소.dataset.속성명
+
+		ex)let test = document.querySelector('.btn').dataset.test;
+		console.log(test);
+
