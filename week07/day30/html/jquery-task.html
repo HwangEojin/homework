@@ -1,0 +1,52 @@
+<!-- 5번 : 전체동의(jquery) -->
+<!-- 28일차 event06.html 참고 - javascript 전체동의 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery-task</title>
+    <link rel="stylesheet" href="../css/jquery-task.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="menu">HOME</li>
+          <li class="menu">메뉴1</li>
+          <li class="menu">메뉴2</li>
+          <li class="menu">메뉴3</li>
+        </ul>
+        <article class="sub-menu none">
+          <ul class="sub-menu--ul">
+            <li class="sub-menu--li">메뉴1</li>
+            <li class="sub-menu--li">메뉴2</li>
+            <li class="sub-menu--li">메뉴3</li>
+            <li class="sub-menu--li">메뉴4</li>
+          </ul>
+        </article>
+      </nav>
+    </header>
+    <section class="side-main-container">
+      <aside></aside>
+      <main>
+        <section class="section01"></section>
+        <section class="section02"></section>
+      </main>
+    </section>
+    <footer></footer>
+  </body>
+
+  <script>
+    let $li = $("li").eq(1);
+    console.log($li);
+    $li.click(() => {
+      $(".sub-menu").toggleClass("none");
+    });
+  </script>
+</html>

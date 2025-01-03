@@ -1,0 +1,36 @@
+<!-- 5번 : 전체동의(jquery) -->
+<!-- 28일차 event06.html 참고 - javascript 전체동의 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전체동의(jQuery)</title>
+</head>
+<body>
+  <form>
+    <div><label>전체동의<input type="checkbox" name="all" class="all"></label></div>
+    <div><label>서비스 이용약관 동의<input type="checkbox" name="term1" class="term"></label></div>
+    <div><label>광고수신 동의<input type="checkbox" name="term2" class="term"></label></div>
+    <div><label>개인정보 이용약관 동의<input type="checkbox" name="term3" class="term"></label></div>
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  $(".all").on("click", (e)=>{
+    console.log(e.target.checked);
+    $(".term").prop("checked", e.target.checked);
+  });
+  // .all 클래스를 가진 전체 동의 체크박스에 클릭 이벤트 연결
+  // e.target.checked : 현재 클릭된 체크박스(.all)의 체크여부를 나타낸다, true 체크됨/false 체크해제
+  //.prop("checked", e.target.checked) : .term 클래스를 가진 모든 체크박스에 전체동의 체크박스의 상태를 반영
+
+  $(".term").on("click", (e) =>{
+    $('.all').prop("checked", $(".term").filter(":checked").length === 3);
+    console.log($(".term").filter(":checked").length); //체크된 체크박스 개수
+  });
+  //$(".term") : .term 클래스를 가진 모든 요소를 선택, 결과는 체크박스 DOM 요소들의 jquery 객체 리스트
+  //.filter(":checked") : filter 메소드를 사용하여 선택된 요소 중 특정조건(:checked)에 맞는 요소만 필터링
+  //   :checked : HTML의 checked 속성이 설정된 체크박스를 선택하는 CSS선택자
+</script>
+</html>

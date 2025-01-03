@@ -1,0 +1,46 @@
+<!-- 4번 : jquery04 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery 기본 4</title>
+</head>
+<body>
+  <ul class="car">
+    <li>페라리</li>
+    <li>롤스로이드</li>
+    <li>벤틀리</li>
+  </ul>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  const $li = $('li');
+  const $ul = $('ul');
+  // console.log($li);
+  // console.log($li[0]); //jquery 객체에서 한개를 가져오기 위해 접근하면 무조건 JS 객체로 변한다
+  // console.log($($li[0])); //js 객체에 $로 묶으면 jquery 객체로 변한다
+  // console.log($li.eq(0)); //jquery 객체
+
+  // console.log($li.eq(2).text());
+  // console.log($li.eq(0).next().text('람보르기니'));
+  // console.log($li.eq(1).prev().text());
+  // $li.eq(1).closest("ul").attr("class", "super-car");
+
+  //ul 태그의 자식중에서 벤틀리 가져오기
+  // $ul.find('li').each((i, li) => {
+  //   if($(li).text() === "벤틀리"){
+  //     console.log($(li));
+  //   }
+  // });
+
+  //ul 태그 자식 중에서 첫번째 자식 요소 삭제
+  $ul.find('li').first().remove();
+
+  //ul 태그의 마지막 자식요소로 벤츠 추가(.append("<태그>컨텐츠</태그>"))
+  $ul.append("<li>벤츠</li>");
+
+  //ul태그의 기존 li를 모두 없애고 람보르기니만 남기기
+  $ul.html("<li>람보르기니</li>");
+</script>
+</html>

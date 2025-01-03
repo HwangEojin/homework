@@ -1,0 +1,10 @@
+.div-box{
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(blue , pink);
+  margin : 10px;
+}
+
+main{
+  display: flex;
+}
