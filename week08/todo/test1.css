@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family: Noto Sans KR;
+}
+
+html{
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+body{
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+header{
+    padding-top : 20px;
+    border-bottom: 1px solid #e0e0e0 ;
+    text-align: center;
+}
+h1{
+    font-size: 20px;
+    font-weight: 700;
+    color : #333;
+    margin-bottom: 30px;
+
+}
+nav>ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0 10px;
+}
+.todoMenu{
+    width: 33%;
+    font-size: 14px;
+    padding-bottom: 10px;
+    list-style: none;
+ 
+
+}
+.todoMenu>a{
+    text-decoration: none;
+    color: #e9e9e9;
+
+
+}
+.selected{
+    color: #222;
+    border-bottom: 2px solid #333;
+    font-weight: 700;
+}
+
+.selected > a {
+    color: #333;
+}
+
+main{
+    padding : 20px;
+    position: relative;
+    display:flex;
+    flex-direction : column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+#add-button{
+    width : 50px;
+    height : 50px;
+    border-radius: 100%;
+    border : none;
+    align-self: center;
+    font-size: 24px;
+    color : white;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    background-color: #333;
+    margin-top: 10px;
+  
+
+}
+#add-button:hover,.delete:hover{
+    cursor: pointer;
+}
+#add-button:active{
+    transform:scale(0.9);
+    background-color: #000000 ;
+}
+
+h2{
+    font-size : 16px;
+    margin-bottom: 20px;
+}
+#task-list{
+    min-height: 350px;
+    max-height: 350px;
+    overflow: auto;
+}
+#task-list::-webkit-scrollbar{
+    display: none;
+}
+#task-list>li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task{
+    width : 80%;
+    height: 30px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+}
+.checkbox{
+    width : 15px;
+    height: 15px;
+}
+.delete{
+    width : 20px;
+    height: 20px;
+    border : none;
+    background-color: transparent;
+}
+input[type="checkbox"]{
+    accent-color: #333;
+}
+
+.completed .task{
+    text-decoration: line-through;
+    color: #cfcfcf;
+}
