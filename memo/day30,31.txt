@@ -1,0 +1,96 @@
+day30
+
+	MVC 패턴
+
+	1. 소프트웨어 디자인 설계 패턴
+		MVC 
+		
+		Model 		테이블에서 조회된 결과값을 담기 위한 변수들이 선언된 클래스
+				클래스명 뒤에 VO, DTO라는 문자열을 붙여준다.
+				VO(value object): 테이블을 보고 그대로 만든 객체
+				DTO(Data Transfer Object) : 화면에 결과를 한번에 묶어서 전달할 객체
+		
+		View		사용자에게 보여질 화면을 구성하는 부분
+				
+		Controller	DAO(Data Access Object) 테이블에 접근할 수 있는 메소드들이 선언된 클래스
+				접근 후 결과값이 있을 경우 Model 객체에 담은 후 처리
+				controller에 선언된 CRUD 메소드를 사용하는 부분
+
+
+day31
+	JDBC(Java DataBase Connectivity)
+		자바프로그램과 데이터베이스를 연결시켜주는 API
+
+	1) JDBC Driver 로딩
+		DB에 맞는 드라이버를 로딩한다.
+
+	2) Connection 
+		드라이버를 연결 후 커넥션 객체를 얻어낸다.
+		커넥션 객체를 정상적으로 얻어냈다면 DBMS와 정상 연결 된 것이다.
+
+	3) preparedStatement
+		JDBC를 통해 DBMS에 보낼 쿼리를 관리해주는 인터페이스
+		executeUpdate() / executeQuery() 메소드를 통해 쿼리를 보낸다.
+
+	4) ResultSet
+		쿼리의 결과를 받을 때 사용하는 인터페이스
+		DBMS에서 실행한 쿼리의 결과는 테이블 형태로 저장된다.
+
+	5) close()
+		DB와 연결하여 사용한 객체들은 close()를 통해 연결을 닫아야한다.
+
+	
+	MVC 패턴
+		소프트웨어 디자인 패턴
+		모든 어플리케이션은 개발에 들어가기전 설계가 필수
+		JAVA를 활용한 웹 어플리케이션의 설계 방식 중 가장 대표적인 것이 MVC 패턴이다.
+		
+
+		M(Model) : db에서 조회된 결과값을 담기 위한 변수들이 선언된 클래스
+			클래스 명 뒤에 VO, DTO를 붙여준다.
+			VO(Value Object) : 값을 나타내는 객체
+			DTO(Data Transfer Object) : 데이터를 주고 받기 (전송하기)위한 객체
+		
+		V(View) : 사용자에게 보여질 화면을 구성하는 부분
+			controller에 선언된 메소드를 사용하는 부분
+			처리 결과를 화면으로 보여준다.
+		
+		C(Controller)
+			DAO(Data Access Object) : db에 접근할 수 있는 메소드들이 선언된 메소드
+			접근 후 결과값이 있을 경우 Model 객체에 담아서 처리
+			클래스명 뒤에 DAO를 붙인다.
+
+
+	* 도서 대여 시스템
+   사용자와 도서를 관리하는 시스템 구현
+   사용자가 도서를 검색하고 대여할 수 있는 기능
+   DAO와 DTO를 사용한 데이터베이스 연동 실습
+
+- 요구사항
+USERS 테이블
+   user_number 정수 PK
+   user_id 문자열 NN
+   user_pw   문자열 NN
+   user_name 문자열 NN
+   user_phone 문자열 UK
+
+BOOK 테이블
+   book_number 정수 PK
+   book_title 문자열 NN
+   book_author 문자열 NN
+   book_rent 문자열(true, false) DEFAULT false NN
+
+1) 사용자 관리   
+   - 사용자 등록
+   - 사용자 로그인
+   
+2) 도서관리
+   - 도서 등록
+   - 도서 목록 조회
+   - 도서 검색
+
+3) 대여관리
+   - 도서 대여
+   - 대여상태확인
+
+
