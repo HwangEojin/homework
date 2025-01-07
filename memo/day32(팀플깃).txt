@@ -1,0 +1,223 @@
+day32
+
+피그마(figma) -> git 팀관리
+
+1. 피그마(figma)
+	인터페이스 디자일을 위한 협업 웹 어플리케이션
+	피그마 하나로 모든 것을 전달할 수 있다. 
+	전체 디자인, 이미지 파일, 폰트, 간격, 사용자 인터랙션까지 거의 모든것을 해결할 수 있다.
+	- 웹과 모바일 UI/GUI 디자인을 위해 만들어진 프로그램
+	- 어도비에서 28조를 주고 인수했다(22년 10월 기준)
+	
+1) 실행
+	https://www.figma.com 사이트 접속
+	구글 계정으로 로그인
+	회원가입
+	
+2) 피그마의 구성
+(1) 프로젝트 생성
+	피그마 파일(draft)을 하나의 프로젝트라고 부른다
+
++) 피그마 제대로 실행 안될 경우
+	chrome://flags/
+	
+	WebGL 검색 => WebGL Draft Extensions 사용가능으로 변경
+	Choose 검색 => Choose ANGLE graphic backend 를 OpenGL로 변경
+
+(2) 기본조작
+	move 툴 사용으로 요소들을 움직일 수 있다 [M]
+	요소를 선택하면 테두리가 생기는데 테두리 끝에 마우스를 두고 움직이면 크기를 조정할 수 있다
+	정비율로 크기를 조절할 때는 SHIFT와 함께 사용한다
+	text는 scale [K] 툴로 키워야한다
+
+(3) 전체 레이아웃
+	컴포넌트, 레이어, 페이지 등을 구성하는 왼쪽 사이드바[CTRL + SHIFT + \]
+		전체 레이아웃을 테스트 할 때 CTRL + \ 
+	인터페이스를 구성하는 오른쪽 사이드바
+	작업 영역을 구성하는 대지보드 중앙 대지보드
+		중앙 이동은 스페이스를 누른 상태에서 드래그 화면을 이동할 수 있다
+		[CTRL + +, -]키를 사용하여 뷰 크기를 변경할 수 있다
+
+(4) 피그마 단축키
+- Edit
+	ctrl + c	복사
+	ctrl + x	잘라내기
+	ctrl + v	붙여넣기
+	ctrl + shift +v 선택 위에 붙여넣기
+	ctrl + alt + c	속성 복사
+	ctrl + alt + v	속성 붙여넣기
+- select
+	ctrl + right-click(우클릭) 레이어 선택
+	ctrl + click 	직접선택
+- view
+	ctrl + / z + click / ctrl + whell 줌인
+	ctrl - / alt + z + click / ctrl + whell 줌 아웃
+	
+- Arrange
+	shift + a 	오토 레이아웃 만들기
+	alt+shift+a	오토 레이아이웃 해제
+	ctrl + ]	앞으로 가져오기
+	ctrl + [	뒤로 보내기
+	ctrl + shift + ]	맨 앞으로 가져오기
+	ctrl + shift + [	맨 뒤로 보내기
+
+- tools
+	v	이동
+	c	코멘트 추가 또는 보기
+	p	펜툴
+	r	사각형 그리기
+	o	원그리기
+	l	선그리기
+	f	프레임생성
+	s	슬라이스
+	i	스포이드 툴
+
+- text
+	t		텍스트
+	ctrl + shift + v 스타일에 맞춰 붙여넣기
+	
+- object
+	ctrl + g	그룹
+	ctrl + shift + g 그룹해제
+	ctrl + shift + l 잠금/잠금해제
+	ctrl + e	병합
+
+- components
+	ctrl + alt + k	컴포넌트 만들기
+	ctrl + alt + b	인스턴스 분리하기
+
+- misc
+	ctrl + / 	검색
+	ctrl + shift + / 단축키 보기
+
+3) 컴포넌트와 인스턴스
+	컴포넌트(Component)
+		프로그래밍에 있어 재사용이 가능한 각각의 독립된 모듈이나 요소
+		만들게 되면 Assets에 나의 컴포넌트들이 정의되며 가져다 쓸 수 있게 된다
+
+	인스턴스(Instance)
+		머리 속에(IN) 판단에 도움이되는 하나의 기준점을 세워두는(stat) 것(ance)이 실례, 사례가 되었다
+	- 컴포넌트가 수정되면 같이 바뀐다
+	- 컴포넌트의 영향을 받지 않고 수정하려면 분리(detach instance)가 필요하다
+
+- 컴포넌트 찾아가기
+	우측 바 - go to main component
+
+- 인스턴스 해제하기
+	우측 클릭 - Detach instance
+
+- 컴포넌트의 사용목적
+	일괄 수정의 목적을 가지고 있다
+	버튼, 레이아웃의 잦은 수정이 예상되는 곳에 인스턴스를 사용하면 컴포넌트의 컬러, 크기, 레이아웃이 변경되었을 때 
+	일괄수정되어 관리하기 수월하다
+
+피그마 부팀장 => 팀원들 초대
+
+--------------------------------------------------------------------------
+git
+1. organization
+	협업을 위한 공용 레포지토리를 사용하는 방법
+
+팀장
+1) 깃허브 사이트에 접속한다
+2) 우측 상단 아이콘을 누르고 new organization을 누른다
+3) free에 있는 create a free organization을 누른다(organization 협업하기 위한 그룹이다)
+4) organization 그룹이름, 팀장 이메일을 입력하고 MyPersonal account로 설정한다
+5) organization이 만들어지고 초대할 멤버를 입력하는 창이 나온다. 여기서는 skip 한다
+6) 혹시 설문조사 창이 나오면 submit으로 빠져나온다
+7) pepole 탭 클릭 후 Invite member를 누른다
+8) 팀원 닉네임 또는 이메일 입력후 Member로 send invitation을 누른다
+	같은 방법으로 모든 팀원을 초대한다
+9) 공용 저장소를 만든다
+	Repositories에서 Create a new repository > 공용 저장소 설정하기(public, readme 추가)
+10) 공용 저장소를 개인 저장소로 fork한다
+
+팀원
+1) 팀장에게 깃허브 닉네임 또는 이메일주소를 알려준다
+2) 팀장이 초대를 보냈다고 알려주면 이메일을 확인하고 join버튼 누른다
+3) 팀장이 공용저장소를 만들고 주소를 보내주면 해당 주소로 접속한다
+4) 공용 저장소를 개인 저장소로 fork한다
+
+----------------------------------------------------------------------------------
+# 팀장
+1. organiation 만들고 팀원 초대하기
+2. 공용 repo 생성하고 모든 팀원 fork 받기
+3. fork받은 개인 repo 원격 연결하기
+4. ReadMe 등의 파일이 있다면 pull 받기 (없으면 생략)
+5. 로컬 저장소에 .gitignore 생성하기
+6. 기타 공유할 파일 만들기
+7. push하기
+8. pr 보내기
+9. Merge하기
+10. 기본 세팅이 끝났다면 팀원들에게 클론 받으라고 하기
+주의사항 같은 팀원이 하나의 파일을 수정하게 되면 병합 시 충돌이 발생한다.
+그러므로 팀원들은 역할을 잘 분배하여 같은 파일을 동시에 수정하는 일이 없도록 한다.
+
+# 팀원
+1. 팀장이 Organization을 만든 후 초대를 보내면 수락한다.
+2. 팀장이 공용 repo를 만들면 fork한다.
+3. 팀장이 작업이 끝나면 팀장의 지시에 따라 clone을 받는다.
+4. 개인 repo를 origin으로 연결
+
+# 협업방법
+1. 로컬저장소에 pull을 받아올 때는 개인 레포지토리에서 sync fork를 누르고 초록색 버튼 클릭한다
+	git bash에서 pull을 받는다(main 브랜치에서)
+2. 로컬에서 수정한 내용을 push할 때는 개인 repo에 하고 pr을 보낸다
+3. 팀장은 병합이 끝나면 팀원에게 pull을 받으라고 알려준다
+4. 팀원은 pr을 보내기 전 팀장에게 보낸다고 말하고 팀장이 준비되면 보낸다
+
+# 연결, 설정, push, pull 명령어 정리
+1. 내 폴더 중 작업공간 설정
+	git init
+2. 초기 설정
+	git config --global user.email "깃허브이메일주소"
+	git config --global [user.name](http://user.name/) "깃허브닉네임"
+	git config --list (설정 확인하기) --> q누르면 탈출
+3. clone 받기 
+    git clone 주소 .  ← 점 빼먹지 말기
+4. 브랜치 이름 바꾸기
+	git branch (브랜치 목록확인)
+	git branch -m master main (master 브랜치를 main으로 수정)
+5. 개인 원격 저장소 연결하기
+	git remote add origin 원격저장소주소
+	git remote -v (원격 저장소 확인하기)
+6. 공용 저장소 연결하기
+	git remote add 공용저장소이름 공용저장소주소
+	git remote -v (공용 저장소 확인하기)
+7. 스테이징
+	git add . (현재 경로에 있는 모든파일 올리기)
+	git status (파일 상태 확인)
+8. 커밋
+	git commit -m "커밋메세지"
+
+8-1. 원격 저장소에 push 하기
+
+	git push origin main
+	git push -f origin main (fetch를 진행)
+
+8-2. 원격 저장소에서 pull 받기
+
+	git pull origin main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
