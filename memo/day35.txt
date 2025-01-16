@@ -1,0 +1,241 @@
+day35
+
+1. GET 방식과 POST 방식
+	1) GET 방식
+		데이터 전달 방식 : 주소(URL)에 데이터를 쿼리스트링 형태로 추가하여 서버로 전송
+		구조	: https://www.koreait.com/page?key1=value1&value2
+		
+		속도	: URL에 데이터를 추가해 전송하므로 요청속도 빠름
+		길이제한	: URL의 길이에 따라 데이터 전송크기가 제한됨 (일반적으로 2048자)
+		데이터 노출	: 데이터가 URL에 그대로 노출되므로 민감정보(비밀번호, 개인정보 등)을 전송하면 안됨
+		캐싱 및 북마크 : 브라우저가 URL을 캐싱하거나 북마크에 저장할 수 있음
+			동일한 요청을 여러번 반복하는 경우 적합
+		
+		사용	: 민감하지 않은 데이터 전달
+			ex) 페이지 정보, 검색어
+	
+	2) POST 방식
+		데이터 전달 방식 : 데이터가 요청 (request) 본문(body)에 포함되어 서버로 전송
+			클라이언트와 서버간에 데이터가 URL에 드라나지 않음
+		속도	: GET 방식보다 느리지만, 대량의 데이터를 처리할 수 있음
+		길이제한	: 이론적으로 제한이 없지만 , 웹서버나 브라우저 설정에 따라 제한(일반적으로 몇mb)이 있을 수 있음
+		데이터 노출 : 데이터가 요청 본문에 포함되므로 URL에 나타나지 않음
+		캐싱	: 브라우저가 POST 요청을 캐싱하지 않음 -> 데이터를 다시 전송하도록 설계
+		사용	: 민감하거나 대용량 데이터를 전송
+			ex) 로그인, 회원가입, 글쓰기	
+
+2. forward와 redirect
+	1) forward
+		작동방식 : request.getRequestDispatcher("파일경로").forward(request,response)
+		서버가 받은 요청(request)를 그대로 유지하며 서버 내부에서 다른 리소스로 이동
+		클라이언트의 요청 데이터와 응답 데이터가 유지됨
+
+	특징 1. URL의 변화가 없다. -> 브라우저의 URL이 변경되지 않으므로 사용자는 다를ㄴ 리소스로 이동했는지 알 수 없음
+	특징 2. 보안 -> 요청 데이터가 유지되므로, 서버 내부 로직 처리 후 민감한 정보도 안전하게 처리 가능
+			클라이언트에게 노출되지 않아 안전한 내부 작업에 적합
+	특징 3. 서버 부담 -> 서버 내부에서만 작업하므로 부담이 적음
+	
+	2) redirect
+		작동방식 :" response.sendRedirect("URL경로");
+		서버가 클라이언트 브라우저에게 새 URL로 이동하라고 요청
+		클라이언트는 새로운 요청을 만들어 해당 URL로 접근
+	
+	특징 1. URL 변화가 있다 : 브라우저의 URL이 변경되므로 사용자가 이동한 경로를 알 수 있다.
+	특징 2. 데이터 유지가 불가 : 기존 요청 (request) 데이터는 소멸 -> 새로운 요청만 서버에 전달
+	특징 3. 보안 : 민감한 데이터를 처리한 후 클라이언트의 새 요청으로 이동시켜 데이터 재전송 방지
+		보안성이 향상되며, 민감한 데이터가 URL에 포함되지 않음
+	특징 4. 서버 부담 : 클라이언트가 새 요청을 하므로 서버 부담이 증가
+
+3.헤더,푸터(header,footer)
+
+	헤더 (header) , 푸터(footer)를 관리하는 방법은 코드의 재사용성과 유지보수를 위해 중요하다
+	헤더와 푸터를 각각 독립적인 JSP 파일로 분리하고 필요할 때마다 포함시킬 수 있다.
+	
+------------------------------------------------------------------------------------------------------
+
+1. day02_task 라는 웹 프로젝트를 만든다
+   url 루트경로는 /task이다
+   반드시 web.xml 파일을 이용한다
+
+2. index.jsp 에서 사용자에게 이름과 나이를 입력받고 접속이라는 버튼을 누르면 get방식을 사용하여 MyServlet1으로 요청이 간다.
+   result.jsp에 이름과 나이를 출력하는데 forward 방식으로 이동한다
+
+   result.jsp 결과화면
+   000님 환영합니다
+   000님의 2025년 나이는 00살 입니다
+   
+3. login.jsp에서 아이디와 비밀번호를 입력받아 로그인 버튼을 누르면 post 방식을 사용하여 MyServlet2로 요청이 간다.
+
+4. com.serlvetTask.app 패키지에 MyServlet1과 MyServlet2를 만든다
+   url 경로는 각각 resultServlet1, resultServelt2이다
+
+5. index.jsp 파일에서 성별을 선택할 라디오버튼 3개를 만들어서 result.jsp 페이지에 결과 출력하기
+   (선택안함, 남자, 여자 라디오버튼)
+
+6. 취미를 선택할 수 있는 체크박스를 만들어서 result.jsp 페이지에 결과 출력하기
+   (취미는 4개 이상)
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+1. JSP 태그
+	JSP 에서 사용 가능한 태그이며 다양한 기능을 지원한다
+	JSP 태그를 이용하여 HTML 내부에 자바 코드의 사용이 가능하지만 다른언어가 섞이게 되면 유지보수 , 가독성 측면에서 좋지 않기 떄문에,
+	JSTL 과 EL이 등장했고 JSP태그의 사용빈도가 낮아졌다
+
+	1) 지시자 태그 <%@ %>
+		지시자 종류
+		Page  : 페이지 속성을 지시하는 태그
+			<%@ page language="header.jsp" %>
+		include : 다른 파일의 내용을 포함시킨다
+			<%@ include file="header.jsp" %>
+		taglib : 태그 라이브러리를 지정
+			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+
+	2) 선언 태그 <%! .... %>
+		변수, 메소드를 선언할 떄 사용한다
+		선언 태그 안에 만든 변수나 메소드는 해당 페이지 안에서 언제든 사용이 가능하다
+	
+	3) 표현식 태그
+		<%= ...>
+
+		변수, 메소드 결과 값을 출력할 떄 사용한다
+
+	4) 스크립틀릿 태그 <% %>
+		자바 코드를 삽입하기 위해 사용한다
+		자바 코드를 자유롭게 사용할 수 있다.
+
+	5) 주석 <%-- --%>
+		JSP 주석은 컴파일 자체를 막아버린다
+		일반 HTML 코드는 HTML 주석을 사용하면 되지만 JSP와 관련된 코드를 주석처리 할 때는 반드시 JSP 주석을 사용한다.
+	
+	6) 액션태그 <jsp:action></jsp:action>
+		JSTL, EL의 등장으로 잘 사용되지 않는다
+		액션 태그를 너무 많이 사용하면 코드가 복잡하고 유지보수가 어렵다.
+
+
+
+2. JSTL 과 EL
+	JSP에서 자바코드를 대신하여 사용하며 외부 라이브러리이다.
+	서블릿에서 JSP로 기술이 발전했지만 여전히 HTML 코드와 JAVA 코드가 같이 사용된다는 단점이 있다.
+	JSTL 태그와 EL 표현식을 사용하면 자바 코드를 대체하게 되어 태그로만 구성된 페이지를 만들 수 있다.
+
+
+	1) JSTL 다운받기
+		구글 > JSTL download > 최상단 링크 클릭
+		jakarta-taglibs-standard-1.1.2
+
+		프로젝트 webapp > Web-INF > lib 위치에
+		폴더 압축 해체한 폴더에 있는 lib 폴더 2개 jar 파일 드래그로 추가한 후
+		build path 추가
+
+	2) EL(Expressions Language)
+		JSP에서 사용하는 표현 언어
+		JSP에서 JAVA로 가져온 값을 간편하게 표현하는데 사용된다.
+		${}를 사용한다.
+		 
+		ex) <%= name %> => ${name}
+
+	3) 스코프 (Scope) 
+		어떤 값이 유효한 영역, 범위를 의미
+		
+		-page 스코프
+			JSP 페이지를 의미		
+			현재 페이지 내에서만 유효하다는 의미다.
+			pageContext.setAttribut("name","홍길동")
+			page 스코프를 가진 변수 사용
+			${name}
+		
+		-request 스코프
+			request에 저장된 데이터를 의미한다.
+			${requestScope.name}
+
+		-session 스코프
+			${sessionScope.name}
+
+		-application 스코프
+			어플리케이션 전체에서 사용 가능한 데이터를 의미한다.
+			${applicationScope.name}
+
+		-값을 찾을 때 스코프를 명시하지 않으면 다음과 같은 순서로 찾는다
+			page->request ->session -> application
+
+
+	4) EL 연산자
+
+		%, mod
+		&&, and
+		||,or
+		>,gt
+		<,lt
+		>= ge
+		<= le
+		== eq
+		!= ne
+		!  not
+		empty
+
+
+3. JSTL (JSP Standard Tag Library)
+
+	JSP 페이지에서 자주 사용되는 로직을 단순화하고 JAVA 코드를 줄이기 위해 제동되는 테그 라이버러리이다.
+	JSTL은 HTML, JSP 태그, JAVA코드 혼합사용을 줄이고 가독성과 유지보수를 높여준다.
+
+
+	1) JSTL 사용법
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	JSTL을 사용하기 위해서 JSP 페이지 상단에 코드한줄이 추가되어야한다.
+
+	2) 태그의 종류
+		<c:set> 변수 선언
+		<c:out> 값 출력
+		<c:if> 단순 if문
+		<c:choose> 여러 조건문의 시작 (if ~ else if ~ else)
+		<c:when> 조건문의 조건식을 저장 (조건문의 else if문을 의미)
+		<c:other>조건문의 else를 의미함
+		<c:forEach> 반복문
+
+		for(자료형 변수명 : 자료구조){}		<c:forEach var='' items="%[]></c:forEach>
+		for(초기식;조건식;증감식){}			<c:forEach var="" begin="" end=""></c:forEach>
+
+
+-------------------------------------------------------------------------------------------------------
+오라클 21c 다운로드
+
+
+SQL> alter session set "_ORACLE_SCRIPT"=true;
+
+세션이 변경되었습니다.
+
+SQL> create user test identified by 1234;
+
+사용자가 생성되었습니다.
+
+계정을 그냥 생성시 ORA-65096 오류 발생함
+
+SQL> grant connect, resource, dba to test;
+
+권한이 부여되었습니다.
+
+
+SQL> conn test/1234;
+연결되었습니다.
+SQL> show user;
+USER은 "TEST"입니다
+SQL> create table tbl_member(member_id number, member_name varchar2(100));
+
+테이블이 생성되었습니다.
+
+SQL> create sequence seq_member;
+
+시퀀스가 생성되었습니다.
+
+SQL> insert into tbl_member
+  2  values (seq_member.nextval, '짱구');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from tbl_member;
