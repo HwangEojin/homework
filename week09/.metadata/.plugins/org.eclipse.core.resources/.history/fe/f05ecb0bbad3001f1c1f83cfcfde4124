@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+   <insert id="join" parameterType="map">
+      insert into tbl_user(user_number, user_id, user_pw, user_name, user_age, user_gender)
+      values(seq_user.nextVal, #{userId}, #{userPw}, #{userName}, #{userAge}, #{userGender})
+   </insert>
+   
+   <select id="login" parameterType="" resultType="int">
+      select count(*) from tbl_user
+      where user_id = #{} and user_pw = #{}
+   </select>
+   
+   <select id="checkId">
+      select count(*) 
+      from tbl_user
+      where user_id = #{}
+   </select>
+</mapper>

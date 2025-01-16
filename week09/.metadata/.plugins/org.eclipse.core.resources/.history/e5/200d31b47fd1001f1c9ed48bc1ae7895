@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>타이틀</title>
+</head>
+
+
+<body>
+
+	<jsp:include page=header.jsp>
+
+
+	<form action="handler" method="get">
+		<label for="name">이름 (GET : )</label> <input type="text" id="name"
+			name="userName" placeholder="이름을 입력해주세요.">
+		<button type="submit">GET요청</button>
+	</form>
+
+	<form action="handler" method="post">
+		<label for="email">이메일 (POST : )</label> <input type="email"
+			id="email" name="userName" placeholder="이름을 입력해주세요.">
+		<button type="submit">POST요청</button>
+	</form>
+
+
+	<h1>Forward /redirect</h1>
+	
+	
+	<form action="ForwardHandler" method="post">
+		<label for="forwardName">Forward 이름 : </label> 
+		<input type="text"id="forwardName" name="forwardName" placeholder="이름을 입력해주세요.">
+		<button type="submit">Forward 요청</button>
+	</form>
+	
+	
+	<form action="RedirectHandler" method="post">
+		<label for="redirectName">redirect 이름 : </label> 
+		<input type="text"	id="redirectName" name="redirectName" placeholder="이름을 입력해주세요.">
+		<button type="submit">redirect 요청</button>
+	</form>
+	
+</body>
+</html>

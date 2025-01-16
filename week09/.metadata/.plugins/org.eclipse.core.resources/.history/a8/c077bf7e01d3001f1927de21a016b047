@@ -1,0 +1,5 @@
+package com.mybatis.confif;
+
+public class MyBatisConfig {
+
+}

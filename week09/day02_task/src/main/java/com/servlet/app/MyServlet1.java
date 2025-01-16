@@ -8,45 +8,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SignIn
+ * Servlet implementation class MyServlet1
  */
-
+//@WebServlet("/MyServlet1")
 public class MyServlet1 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MyServlet1() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+//      response.getWriter().append("Served at: ").append(request.getContextPath());
+      String name = request.getParameter("name");
+      int age = Integer.parseInt(request.getParameter("age"));
+      String gender = request.getParameter("gender");
+      String[] hobbies = request.getParameterValues("hobby");
+      System.out.println(name);
+      System.out.println(age);
+      
+      request.setAttribute("name", name);
+      request.setAttribute("age", age);
+      request.setAttribute("gender", gender);
+      request.setAttribute("hobbies", hobbies);
+      
+      request.getRequestDispatcher("result.jsp").forward(request, response);
+      
+   }
 
-		String name = request.getParameter("userName");
-		System.out.println(name);
-		response.setContentType("text/html; charset=UTF-8");
-		request.setAttribute("name", name);
-	
-		int age = Integer.parseInt(request.getParameter("userAge"));
-		request.setAttribute("age", age);
-		request.getRequestDispatcher("result.jsp").forward(request, response);
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String forwardName = request.getParameter("forwardName");
-		request.setAttribute("forwardName", forwardName);
-		
-		
-		//Forward 요청 처리
-		request.getRequestDispatcher("forwardResult.jsp").forward(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

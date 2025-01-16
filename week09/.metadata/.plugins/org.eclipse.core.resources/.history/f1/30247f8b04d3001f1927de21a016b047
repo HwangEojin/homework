@@ -1,0 +1,8 @@
+package com.mybatis.config;
+
+public class MyBatisConfig {
+	static {
+		
+	}
+
+}

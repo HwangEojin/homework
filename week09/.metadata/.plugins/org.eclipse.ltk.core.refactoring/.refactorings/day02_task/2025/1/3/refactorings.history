@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.servlet.app.SignIn.java&apos; to &apos;MyServlet1.java&apos;&#x0D;&#x0A;- Original project: &apos;day02_task&apos;&#x0D;&#x0A;- Original element: &apos;com.servlet.app.SignIn.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.servlet.app.MyServlet1.java&apos;" description="Rename compilation unit &apos;SignIn.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java&lt;com.servlet.app{SignIn.java" name="MyServlet1.java" references="false" stamp="1736754255052" version="1.0"/>
+</session>

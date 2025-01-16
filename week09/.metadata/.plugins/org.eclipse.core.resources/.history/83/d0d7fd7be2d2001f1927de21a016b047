@@ -1,0 +1,6 @@
+package com.servlet.app.MyServlet;
+
+public class Snippet {
+	EDIT : 20250115 황어진 첨부파일 업로드 시 , 이미지 타입 파일로만 업로드하게 코드 추가
+}
+
