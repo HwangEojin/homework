@@ -79,3 +79,7 @@ day40
 			
 			-세션 종료하기
 			session.invalidate();
+
+-- 로그아웃 컨트롤러
+	HttpSession session = request.getSession();
+	session.inval
