@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<insert id="join" parameterType="MemberDTO">
+		insert into tbl_member(member_number, member_id, member_password, member_name, member_age, member_gender)
+		values(seq_member.nextVal, #{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender})
+	</insert>
+	
+	<select id="login" parameterType="memberDTO" resultType="memberDTO">
+		select member_number, member_id, member_password, member_name, member_age, member_gender
+		from tbl_member
+		where member_id = #{memberId} and member_password = #{memberPassword}
+	</select>
+	
+</mapper>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+main{
+	width : 500px;
+	margin : 100px auto;
+	border : 1px solid black;
+	padding : 20px;
+}
+
+div{
+	margin : 10px 0;
+}
+
+.btn {
+	text-align:right;
+}
