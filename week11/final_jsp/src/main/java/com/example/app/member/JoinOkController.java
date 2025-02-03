@@ -26,7 +26,7 @@ public class JoinOkController implements Execute{
 		memberDTO.setMemberId(request.getParameter("memberId"));
 		memberDTO.setMemberPassword(request.getParameter("memberPassword"));
 		memberDTO.setMemberName(request.getParameter("memberName"));
-		memberDTO.setMemberName(request.getParameter("memberPhoneNumber"));
+		memberDTO.setMemberPhoneNumber(request.getParameter("memberPhoneNumber"));
 		memberDTO.setMemberAge(Integer.valueOf(request.getParameter("memberAge")));
 		memberDTO.setMemberGender(request.getParameter("memberGender"));
 		
