@@ -1,0 +1,174 @@
+/* 공통 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 20px;
+}
+
+/* 헤더 영역 스타일 */
+header {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 10px;
+}
+
+.header a:hover {
+  background-color: rgb(255, 87, 87);
+  color: white;
+  border-color: rgb(255, 87, 87);
+}
+
+.header a:last-child {
+  margin-right: 0;
+}
+
+/* 글 목록 스타일 */
+.board-list {
+  margin-top: 20px;
+}
+
+.board-header {
+  display: grid;
+  grid-template-columns: 5% 50% 15% 20% 10%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.board-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: 5% 50% 15% 20% 10%;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.board-row:hover {
+  background-color: #f9f9f9;
+}
+
+.board-item {
+  display: flex;
+  align-items: center;
+}
+
+/* 페이징 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.pagination > ul {
+  display: flex;
+  list-style: none;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: rgb(255, 87, 87);
+  border-color: rgb(255, 87, 87);
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+
+/* 글쓰기 버튼 스타일 */
+.write-btn-wrap {
+  text-align: right;
+  margin-top: 50px;
+}
+
+.write-btn {
+  color: #fff;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.write-btn:hover {
+  background-color: rgb(255, 87, 87);
+  color: #fff;
+}
+
+/*
+추가
+*/
+
+a {
+	text-decoration: none;
+	color: black;
+}

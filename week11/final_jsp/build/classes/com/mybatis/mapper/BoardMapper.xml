@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!-- 전체 게시글 조회 -->
+	<select id="selectAll" resultType="BoardListDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+            SELECT ROWNUM AS rnum, subquery.*
+            FROM (
+                SELECT 
+                    m.member_number,
+                    m.member_id,
+                    b.board_number,
+                    b.board_title,
+                    b.board_content,
+                    b.board_date,
+                    b.board_read_count
+                FROM tbl_member m
+                JOIN tbl_board b ON m.member_number = b.member_number
+                ORDER BY b.board_date DESC
+            ) subquery
+            WHERE ROWNUM <= #{endRow}
+        )
+        WHERE rnum > #{startRow}
+        ]]>
+	</select>
+
+	<!-- BoardMapper.xml에 total을 가져오기 위한 쿼리 작성 -->
+	<!-- 게시글 총 개수 -->
+	<select id="getTotal" resultType="int">
+        <![CDATA[
+        SELECT COUNT(board_number) 
+        FROM tbl_board
+        ]]>
+	</select>
+
+
+	<!-- 게시글 추가 <insert id="insert" parameterType="BoardDTO"> INSERT INTO tbl_board 
+		(board_number, board_title, board_content, member_number) VALUES (tbl_board_seq.NEXTVAL, 
+		#{boardTitle}, #{boardContent}, #{memberNumber}) </insert> 방금 생성된 시퀀스 값 가져오기 
+		<select id="getCurrentBoardNumber" resultType="int"> SELECT tbl_board_seq.CURRVAL 
+		FROM DUAL </select> -->
+
+	<!-- useGeneratedKeys와 keyProperty 활용 MyBatis의 useGeneratedKeys 속성과 CURRVAL을 
+		조합해 자동으로 시퀀스 값을 객체 필드에 매핑가능 -->
+	<!-- 게시글 추가 -->
+	<insert id="insert" parameterType="BoardDTO">
+		INSERT INTO tbl_board
+		(board_number, board_title, board_content, member_number)
+		VALUES
+		(seq_board.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberNumber})
+	</insert>
+
+	<!-- 마지막 생성된 시퀀스 값을 가져오는 쿼리 -->
+	<select id="getCurrentBoardNumber" resultType="int">
+		SELECT
+		seq_board.CURRVAL FROM DUAL
+	</select>
+
+	<select id="select" parameterType="int"
+		resultType="BoardListDTO">
+		select
+		m.member_number, m.member_id, b.board_number ,
+		b.board_title ,
+		b.board_content , b.board_date , b.board_read_count
+		from tbl_member m
+		join tbl_board b
+		on board_number = #{boardNumber} and
+		m.member_number =
+		b.member_number
+	</select>
+
+	<select id="selectOne" parameterType="int"
+		resultType="BoardListDTO">
+		SELECT
+		b.board_number,
+		b.board_title,
+		b.board_content,
+		b.board_date,
+		b.board_read_count,
+		m.member_number,
+		m.member_id
+		FROM
+		tbl_board b
+		JOIN
+		tbl_member m
+		ON
+		b.member_number = m.member_number
+		WHERE
+		b.board_number = #{boardNumber}
+	</select>
+
+	<!-- 조회수 쿼리 -->
+	<update id="updateReadCount" parameterType="int">
+		update tbl_board
+		set
+		board_read_count = board_read_count + 1
+		where board_number =
+		#{boardNumber}
+	</update>
+
+	<!-- 삭제 쿼리 -->
+	<delete id="delete" parameterType="int">
+		delete from tbl_board where
+		board_number = #{boardNumber}
+	</delete>
+
+	<update id="update" parameterType="BoardDTO">
+		update tbl_board
+		set
+		board_title = #{boardTitle}, board_content = #{boardContent}
+		where
+		board_number = #{boardNumber}
+	</update>
+</mapper>

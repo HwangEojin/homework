@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+	<select id="selectAll" parameterType="int" resultType="ReplyListDTO">
+		select reply_number, reply_content, reply_date, board_number, r.member_number, member_id
+		from tbl_member m join tbl_reply r
+		on board_number = #{boardNumber} and m.member_number = r.member_number
+	</select>
+	
+	<insert id="insert" parameterType="replyDTO">
+		insert into tbl_reply(reply_content, board_number, member_number)
+		values(#{replyContent}, #{boardNumber}, #{memberNumber})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from tbl_reply
+		where reply_number = #{replyNumber}
+	</delete>
+	
+	<update id="update" parameterType="ReplyDTO">
+		update tbl_reply
+		set reply_content = #{replyContent}
+		where reply_number = #{replyNumber}
+	</update>
+</mapper>

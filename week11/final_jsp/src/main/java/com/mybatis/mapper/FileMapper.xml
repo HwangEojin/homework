@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="file">
+	<insert id="insert" parameterType="FileDTO">
+		insert into
+		tbl_file(file_system_name, file_original_name, board_number)
+		values(#{fileSystemName}, #{fileOriginalName}, #{boardNumber})
+	</insert>
+	
+	<select id="select" parameterType="int" resultType="FileDTO">
+		select file_system_name, file_original_name, board_number
+		from tbl_file
+		where board_number = #{boardNumber}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from tbl_file 
+		where board_number = #{boardNumber}
+	</delete>
+</mapper>
