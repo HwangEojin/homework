@@ -48,9 +48,6 @@ public class VerifyCodeController implements Execute{
 			System.out.println("인증실패");
 
 		}
-		
-		
-		
 		return null;
 	}
 

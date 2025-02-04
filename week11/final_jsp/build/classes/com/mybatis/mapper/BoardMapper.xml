@@ -46,17 +46,21 @@
 		조합해 자동으로 시퀀스 값을 객체 필드에 매핑가능 -->
 	<!-- 게시글 추가 -->
 	<insert id="insert" parameterType="BoardDTO">
+	
+		<selectKey keyProperty = "boardNumber" resultType="int" order="BEFORE">
+			SELECT seq_board.nextVal from dual
+		</selectKey>
 		INSERT INTO tbl_board
 		(board_number, board_title, board_content, member_number)
 		VALUES
-		(seq_board.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberNumber})
+		(#{boardNumber}, #{boardTitle}, #{boardContent}, #{memberNumber})
 	</insert>
 
 	<!-- 마지막 생성된 시퀀스 값을 가져오는 쿼리 -->
-	<select id="getCurrentBoardNumber" resultType="int">
+	<!-- <select id="getCurrentBoardNumber" resultType="int">
 		SELECT
 		seq_board.CURRVAL FROM DUAL
-	</select>
+	</select> -->
 
 	<select id="select" parameterType="int"
 		resultType="BoardListDTO">

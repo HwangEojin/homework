@@ -48,7 +48,7 @@ public class LoginOkController implements Execute {
 		}
 
 //		response.sendRedirect(path);
-		result.setRedirect(true);
+		result.setRedirect(false);//세션은 리다이렉트되면 사라진다.
 		result.setPath(path);
 		return result;
 	}
