@@ -12,9 +12,9 @@ public class SmsService {
 	
 	//coolsms 내용 전달
 	
-	private static final String API_KEY = "NCS1W3QYTXWNR77F";
-	private static final String API_SECRET = "MGCVKPXOLERIXH2CSO5RGZEO0K0SSXXD";
-	private static final String FROM_NUMBER = "01091518714";
+	private static final String API_KEY = "";
+	private static final String API_SECRET = "";
+	private static final String FROM_NUMBER = "";
 	
 	
 	public String sendVerificationSms(String to) throws CoolsmsException {
