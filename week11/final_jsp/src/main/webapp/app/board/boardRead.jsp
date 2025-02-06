@@ -102,7 +102,7 @@
 			<div class="comment-list">
 				<!-- 리스트 예시 -->
 				<ul id="comment-list">
-					<li>
+					<!-- <li>
 						<div class="comment-info">
 							<span class="writer">홍길동</span> <span class="date">2222-22-22</span>
 						</div>
@@ -118,7 +118,7 @@
 								<button type=button class="comment-modify">수정 완료</button>
 							</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 				<!-- /리스트 예시 -->
 			</div>
@@ -137,7 +137,6 @@
 		let memberNumber = "${sessionScope.memberNumber}";
 	</script>
 	<!-- ++++++ -->
-
 	<script src="${pageContext.request.contextPath}/assets/js/boardRead.js"></script>
 </body>
 </html>

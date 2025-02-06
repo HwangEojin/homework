@@ -52,11 +52,11 @@ $fileInput.on('change', function(){
 	$fileList.html('');
 
 	//5개를 넘기면 초기화 처리 //dt는 아래에서 설명
-	if(files.length > 5){
+	if(files.length > 1){
 		let dt = new DataTransfer();
 		this.files= dt.files;
 		console.log(files);
-		alert("파일은 최대 5개까지만 첨부 가능합니다.")
+		alert("파일은 최대 1개까지만 첨부 가능합니다.")
 		$cnt.text(files.length);
 		return;
 	}

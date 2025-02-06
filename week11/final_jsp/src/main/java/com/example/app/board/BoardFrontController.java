@@ -71,16 +71,16 @@ public class BoardFrontController extends HttpServlet {
 			result = new BoardWriteOkController().execute(request, response);
 
 			break;
-//		case "/board/boardDeleteOk.bo":
-//			result = new BoardDeleteOkController().execute(request, response);
-//			break;
-//
-//		case "/board/boardUpdate.bo":
-//			result = new BoardUpdateController().execute(request, response);
-//			break;
-//		case "/board/boardUpdateOk.bo":
-//			result = new BoardUpdateOkController().execute(request, response);
-//			break;
+		case "/board/boardDeleteOk.bo":
+			result = new BoardDeleteOkController().execute(request, response);
+			break;
+
+		case "/board/boardUpdate.bo":
+			result = new BoardUpdateController().execute(request, response);
+			break;
+		case "/board/boardUpdateOk.bo":
+			result = new BoardUpdateOkController().execute(request, response);
+			break;
 		}
 
 		if (result != null) {

@@ -22,8 +22,10 @@
 			alias="BoardListDTO"></typeAlias>
 		<typeAlias type="com.example.app.dto.FileDTO"
 			alias="FileDTO" />
-		<!-- <typeAlias type="com.example.app.dto.ReplyDTO" alias="ReplyDTO" /> 
-			<typeAlias type="com.example.app.dto.ReplyListDTO" alias="ReplyListDTO" /> -->
+		<typeAlias type="com.example.app.dto.ReplyDTO"
+			alias="ReplyDTO" />
+		<typeAlias type="com.example.app.dto.ReplyListDTO" alias="ReplyListDTO"/>
+		
 	</typeAliases>
 
 	<environments default="oracle">
@@ -43,7 +45,7 @@
 		<mapper resource="com/mybatis/mapper/MemberMapper.xml" />
 		<mapper resource="com/mybatis/mapper/BoardMapper.xml" />
 		<mapper resource="com/mybatis/mapper/FileMapper.xml" />
-		<!--<mapper resource="com/mybatis/mapper/ReplyMapper.xml" /> -->
+		<mapper resource="com/mybatis/mapper/ReplyMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -36,7 +36,9 @@ public class FileDAO {
       return sqlSession.selectList("file.select", boardNumber);
    }
 
-   
+   public void delete(int boardNumber) {
+	   sqlSession.delete("file.delete", boardNumber);
+   }
    
 }
 
